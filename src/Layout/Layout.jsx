@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
     return (
-        <div className="min-h-screen  bg-black">
+        <div className="min-h-screen">
             <Outlet/>
         </div>
     );

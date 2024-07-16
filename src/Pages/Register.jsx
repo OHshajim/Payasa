@@ -1,16 +1,17 @@
 import { FaLock, FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
-    <section className="min-h-screen flex justify-center items-center">
+    <section className="min-h-screen flex justify-center items-center py-10">
       <div className="container px-6 mx-auto w-full">
         <div className="flex flex-col justify-center items-center w-full">
           <div className="w-full flex flex-col justify-center items-center">
-            <img className="max-w-xs" src="/Logo.png" alt="logo" />
+            <img className="sm:max-w-xs w-36 sm:w-full" src="/Logo.png" alt="logo" />
 
-            <h1 className="mt-4 text-gray-600 dark:text-gray-300 md:text-lg">
-              Welcome{" "}
+            <h1 className="mt-4 text-gray-600 dark:text-gray-300 ">
+              Register now for get Bonus 🌟
             </h1>
 
             <h1 className="mt-4 text-2xl font-medium text-gray-800 capitalize lg:text-3xl dark:text-white">
@@ -22,8 +23,8 @@ const Register = () => {
             <form className="w-full lg:max-w-xl">
               <div className="relative flex items-center">
                 <span className="absolute">
-                    <MdOutlineMail className="text-2xl ml-3"/>
-                 </span>
+                  <MdOutlineMail className="text-2xl ml-3" />
+                </span>
 
                 <input
                   type="email"
@@ -33,8 +34,8 @@ const Register = () => {
               </div>
               <div className="relative flex items-center mt-4">
                 <span className="absolute">
-                    <FaPhoneAlt  className="text-xl ml-3"/>
-                 </span>
+                  <FaPhoneAlt className="text-xl ml-3" />
+                </span>
 
                 <input
                   type="number"
@@ -45,7 +46,7 @@ const Register = () => {
 
               <div className="relative flex items-center mt-4">
                 <span className="absolute">
-                <FaLock className="text-xl ml-3"/>
+                  <FaLock className="text-xl ml-3 " />
                 </span>
                 <input
                   type="password"
@@ -53,12 +54,10 @@ const Register = () => {
                   placeholder="pin"
                 />
               </div>
+              {AuthenticateBtn("Registration")}
+              <Link to={"/login"}><p className="text-sm text-center mt-3">Already have an account? <span
+               className="  text-[#56c12b] link">Login Now</span></p></Link>
 
-              <div className="mt-8 md:flex md:items-center w-full">
-                <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                  Registration
-                </button>
-              </div>
             </form>
           </div>
         </div>
@@ -67,4 +66,20 @@ const Register = () => {
   );
 };
 
+
+export const AuthenticateBtn = (text) => {
+  return (
+    <div className="mt-8 md:flex md:items-center w-full">
+      <button 
+      className="w-full px-6 py-3 text-sm font-medium  text-white rounded-lg
+      bg-gradient-to-t from-[#428527] via-[#65b325] to-[#AFE84F]
+      hover:bg-gradient-to-t hover:from-[#224514]  hover:via-[#397a04] hover:to-[#6a961c]
+      ">
+        {
+          text
+        }
+      </button>
+    </div>
+  );
+};
 export default Register;
