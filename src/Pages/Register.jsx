@@ -7,15 +7,33 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    watch,
+    // watch,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    
+  const onSubmit = async (data) => {
+    const NewUser = data;
+    console.log(NewUser);
+
+    await fetch(`${import.meta.env.VITE_URL}/authentication/register`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(NewUser),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const { success,access_token } = data;
+        if (access_token && success) {
+          localStorage.setItem("access_key", access_token);
+          
+        }
+      });
   };
-  console.log(errors);
+
+  // console.log(errors);
   return (
     <section className="min-h-screen flex justify-center items-center py-10">
       <div className="container px-6 mx-auto w-full">
