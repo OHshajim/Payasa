@@ -117,7 +117,7 @@ const Register = () => {
                 <input
                   type="password"
                   className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-black dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                  placeholder="pin"
+                  placeholder="Pin"
                   {...register("pin", {
                     required: true,
                     minLength: 5,
@@ -126,6 +126,7 @@ const Register = () => {
                   })}
                 />
               </div>
+              
               {(errors.pin?.type === "required" && (
                 <span className="text-red-600 font-semibold text-sm mt-1">
                   Pin is required ***
@@ -142,6 +143,7 @@ const Register = () => {
                     Pin must be in 5-digit ***
                   </span>
                 ))}
+              
               {/* Button */}
               {AuthenticateBtn("Registration")}
               <Link to={"/login"}>
