@@ -1,4 +1,4 @@
-import { FaLock, FaPhoneAlt} from "react-icons/fa";
+import { FaLock, FaPhoneAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthenticateBtn } from "./Register";
 import { useForm } from "react-hook-form";
@@ -11,12 +11,25 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const User = data;
     console.log(User);
+    await fetch(`${import.meta.env.VITE_URL}/authentication/login`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(User),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      //   const { success, access_token } = data;
+      //   if (access_token && success) {
+      //     localStorage.setItem("access_key", access_token);
+      //   }
+      });
   };
-
 
   return (
     <section className="min-h-screen flex justify-center items-center py-10">
@@ -29,9 +42,7 @@ const Login = () => {
               alt="logo"
             />
 
-            <h1 className=" mt-4 text-gray-300 ">
-              Welcome back
-            </h1>
+            <h1 className=" mt-4 text-gray-300 ">Welcome back</h1>
 
             <h1 className="mt-4 text-2xl font-medium capitalize lg:text-3xl text-white">
               Login now
@@ -97,20 +108,18 @@ const Login = () => {
                 <span className="text-red-600 font-semibold text-sm mt-1">
                   Pin is required ***
                 </span>
-              ))
-               ||
-              (errors.pin?.type === "pattern" && (
-                <span className="text-red-600 font-semibold text-sm mt-1">
-                  Pin must be in 5-digit number ***
-                </span>
-              ))
-               ||
-              ((errors.pin?.type === "maxLength" ||
-                errors.number?.type === "minLength") && (
+              )) ||
+                (errors.pin?.type === "pattern" && (
+                  <span className="text-red-600 font-semibold text-sm mt-1">
+                    Pin must be in 5-digit number ***
+                  </span>
+                )) ||
+                ((errors.pin?.type === "maxLength" ||
+                  errors.number?.type === "minLength") && (
                   <span className="text-red-600 font-semibold text-sm mt-1">
                     Pin must be in 5-digit ***
                   </span>
-              ))}
+                ))}
 
               {AuthenticateBtn("Login")}
               <Link to={"/registration"}>
