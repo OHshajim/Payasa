@@ -24,10 +24,10 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-      //   const { success, access_token } = data;
-      //   if (access_token && success) {
-      //     localStorage.setItem("access_key", access_token);
-      //   }
+        const { success, access_token } = data;
+        if (access_token && success) {
+          localStorage.setItem("access_key", access_token);
+        }
       });
   };
 
