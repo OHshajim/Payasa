@@ -1,3 +1,5 @@
+import { IoIosNotifications } from "react-icons/io";
+
 const Nav = () => {
   return (
     <div className="navbar px-10 py-4">
@@ -19,8 +21,11 @@ const Nav = () => {
 
       {/* If want to add some contents */}
 
-
-
+      <div>
+        <button className="btn btn-ghost text-xl rounded-full">
+          <IoIosNotifications />
+        </button>
+      </div>
       <div className="w-12">
         <img alt="User" src="/Logo(1).png" />
       </div>
