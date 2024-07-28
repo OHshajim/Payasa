@@ -2,7 +2,7 @@ import { IoIosNotifications } from "react-icons/io";
 
 const Nav = () => {
   return (
-    <div className="navbar px-10 py-4">
+    <div className="navbar  py-4">
       <div className="flex-1">
         <div className="w-[45px]">
           <img
