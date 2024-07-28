@@ -4,6 +4,7 @@ import Layout from "../Layout/Layout";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import PrivetRoute from "./PrivetRoute";
+import SendMoney from "../Pages/SendMoney/SendMoney";
 
 const Routes = createBrowserRouter([
   {
@@ -15,6 +16,14 @@ const Routes = createBrowserRouter([
         element: (
           <PrivetRoute>
             <Home />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/sendmoney",
+        element: (
+          <PrivetRoute>
+            <SendMoney/>
           </PrivetRoute>
         ),
       },

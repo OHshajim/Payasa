@@ -11,7 +11,7 @@ const Balance = () => {
     <div>
       <button
         onClick={showCurrentBalance}
-        className="btn rounded-full"
+        className="btn rounded-full "
       >
         <TbCurrencyTaka className="text-2xl " />
         {text}
