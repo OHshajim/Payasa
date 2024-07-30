@@ -2,29 +2,26 @@ import { AuthenticateBtn } from "../../Pages/Register";
 import { FaPhoneAlt } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 
-const SendNumber = ({setValid}) => {
+const SendNumberValidate = ({ setValid, setNumber }) => {
   const {
     register,
     handleSubmit,
-    // watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (data) => {
-    const User = data;
-    console.log(User);
-    // await fetch(`${import.meta.env.VITE_URL}/authentication/login`, {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(User),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //   });
-    setValid(false)
+    console.log(data);
+    await fetch(`${import.meta.env.VITE_URL}/numberValidate/${data.number}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data?.success) {
+          setNumber(data.number);
+          setValid(true);
+        } else {
+          alert(data.message);
+        }
+      });
   };
 
   return (
@@ -72,8 +69,9 @@ const SendNumber = ({setValid}) => {
 };
 
 import PropTypes from "prop-types";
-SendNumber.propTypes = {
-    setValid: PropTypes.bool.isRequired,
+SendNumberValidate.propTypes = {
+  setValid: PropTypes.bool,
+  setNumber: PropTypes.number,
 };
 
-export default SendNumber;
+export default SendNumberValidate;
