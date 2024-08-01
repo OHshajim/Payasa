@@ -1,12 +1,24 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   const [loading, setLoad] = useState(true);
-
-
-  const info = { user, setUser, loading, setLoad};
+  useEffect(() => {
+    const userDetails = async () => {
+      const id = localStorage.getItem("userID");
+      console.log(id);
+      fetch(`${import.meta.env.VITE_URL}/userDetails/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setUser(data);
+          console.log(data);
+          setLoad(false);
+        });
+    };
+    userDetails();
+  }, []);
+  const info = { user, loading, setLoad };
 
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
 };

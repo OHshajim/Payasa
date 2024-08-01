@@ -17,7 +17,7 @@ const Nav = () => {
         <div className="flex flex-col mx-2  items-start">
           <h4 className="font-semibold text-base ">{user?.email}</h4>
           <p className="text-xs text-zinc-500 font-semibold">
-            {user.number} - {user.status}
+            {user?.number} - {user?.status}
           </p>
         </div>
       </div>
@@ -30,7 +30,7 @@ const Nav = () => {
         </button>
       </div>
       <div className="w-12">
-        <img alt="User" src="/Logo(1).png" />
+        <img alt="User" src={user?.image ?? "/Logo(1).png"} />
       </div>
     </div>
   );

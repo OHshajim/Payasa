@@ -1,12 +1,10 @@
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FaLock, FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../Provider/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const { setUser } = useContext(AuthContext);
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -28,17 +26,18 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        const { success, access_token, user } = data;
+        const { success, access_token, userID } = data;
         if (access_token && success) {
-          setUser(user);
           localStorage.setItem("access_key", access_token);
+          localStorage.setItem("userID", userID);
+          navigate('/')
         }
       });
   };
 
   // console.log(errors);
   return (
-    <section className="min-h-screen flex justify-center items-center py-10">
+    <section className="min-h-screen flex justify-center items-center py-10 select-none">
       <div className="container px-6 mx-auto w-full">
         <div className="flex flex-col justify-center items-center w-full">
           <div className="w-full flex flex-col justify-center items-center">

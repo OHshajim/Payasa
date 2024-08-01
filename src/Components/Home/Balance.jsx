@@ -5,8 +5,9 @@ import { AuthContext } from "../../Provider/AuthProvider";
 const Balance = () => {
   const { user } = useContext(AuthContext);
   const [text, setText] = useState("Tap for Balance");
+
   const showCurrentBalance = () => {
-    setText(user.Balance);
+    setText(user?.balance);
     setTimeout(() => setText("Tap for Balance"), 2000);
   };
   return (

@@ -1,9 +1,10 @@
 import { FaLock, FaPhoneAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthenticateBtn } from "./Register";
 import { useForm } from "react-hook-form";
 
 const Login = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -24,15 +25,17 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        const { success, access_token } = data;
+        const { success, access_token ,userID } = data;
         if (access_token && success) {
           localStorage.setItem("access_key", access_token);
+          localStorage.setItem("userID", userID);
+          navigate('/')
         }
       });
   };
 
   return (
-    <section className="min-h-screen flex justify-center items-center py-10">
+    <section className="min-h-screen flex justify-center items-center py-10 select-none">
       <div className="container px-6 mx-auto w-full ">
         <div className="flex flex-col justify-center items-center w-full">
           <div className="w-full flex flex-col justify-center items-center">
