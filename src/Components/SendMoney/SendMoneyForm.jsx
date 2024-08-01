@@ -3,6 +3,7 @@ import { AuthenticateBtn } from "../../Pages/Register";
 import { useForm } from "react-hook-form";
 
 const SendMoneyForm = ({ number }) => {
+  const { user } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -11,16 +12,19 @@ const SendMoneyForm = ({ number }) => {
 
   const onSubmit = async (data) => {
     console.log(data);
-    await fetch(`${import.meta.env.VITE_URL}/numberValidate/${data.number}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        // if (data?.success) {
+    if (user.balance < data.amount){
+      return alert("insufficient balance");
+    }
+      await fetch(`${import.meta.env.VITE_URL}/numberValidate/${data.number}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          // if (data?.success) {
 
-        // } else {
-        //   alert(data.message);
-        // }
-      });
+          // } else {
+          //   alert(data.message);
+          // }
+        });
   };
   return (
     <section className="container mx-auto">
@@ -35,11 +39,12 @@ const SendMoneyForm = ({ number }) => {
             <input
               type="number"
               className="block w-full py-3 border rounded-lg px-11 bg-black text-gray-300 border-gray-600  focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 "
-              value={`0${number}`}
+              value={`0${number}`} readOnly
+              {...register("number")}
             />
           </div>
           {/* Amount */}
-          <label >Amount</label>
+          <label>Amount</label>
           <div className="relative flex items-center mb-4">
             <span className="absolute">
               <FaLock className="text-xl ml-3 " />
@@ -61,7 +66,7 @@ const SendMoneyForm = ({ number }) => {
           )}
 
           {/* Pin */}
-          <label >Pin</label>
+          <label>Pin</label>
           <div className="relative flex items-center">
             <span className="absolute">
               <FaLock className="text-xl ml-3 " />
@@ -104,6 +109,8 @@ const SendMoneyForm = ({ number }) => {
 };
 
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 SendMoneyForm.propTypes = {
   number: PropTypes.number,
 };
