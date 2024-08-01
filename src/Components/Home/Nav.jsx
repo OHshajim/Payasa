@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { IoIosNotifications } from "react-icons/io";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Nav = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div className="navbar  py-4">
       <div className="flex-1">
@@ -12,9 +15,9 @@ const Nav = () => {
           />
         </div>
         <div className="flex flex-col mx-2  items-start">
-          <h4 className="font-semibold text-base ">Shajim Ahmed</h4>
+          <h4 className="font-semibold text-base ">{user?.email}</h4>
           <p className="text-xs text-zinc-500 font-semibold">
-            01000000000 - General Client A/C
+            {user.number} - {user.status}
           </p>
         </div>
       </div>

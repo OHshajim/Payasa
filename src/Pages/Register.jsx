@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FaLock, FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Register = () => {
+  const { setUser } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -25,10 +28,10 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        const { success,access_token } = data;
+        const { success, access_token, user } = data;
         if (access_token && success) {
+          setUser(user);
           localStorage.setItem("access_key", access_token);
-          
         }
       });
   };
@@ -126,7 +129,7 @@ const Register = () => {
                   })}
                 />
               </div>
-              
+
               {(errors.pin?.type === "required" && (
                 <span className="text-red-600 font-semibold text-sm mt-1">
                   Pin is required ***
@@ -143,7 +146,7 @@ const Register = () => {
                     Pin must be in 5-digit ***
                   </span>
                 ))}
-              
+
               {/* Button */}
               {AuthenticateBtn("Registration")}
               <Link to={"/login"}>
