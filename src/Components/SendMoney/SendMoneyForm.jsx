@@ -12,19 +12,29 @@ const SendMoneyForm = ({ number }) => {
 
   const onSubmit = async (data) => {
     console.log(data);
-    if (user.balance < data.amount){
+    
+    if (user.balance < data.amount) {
       return alert("insufficient balance");
     }
-      await fetch(`${import.meta.env.VITE_URL}/numberValidate/${data.number}`)
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          // if (data?.success) {
+    await fetch(
+      `${import.meta.env.VITE_URL}/sendmoney/${user.number}`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        // if (data?.success) {
 
-          // } else {
-          //   alert(data.message);
-          // }
-        });
+        // } else {
+        //   alert(data.message);
+        // }
+      });
   };
   return (
     <section className="container mx-auto">
@@ -39,7 +49,8 @@ const SendMoneyForm = ({ number }) => {
             <input
               type="number"
               className="block w-full py-3 border rounded-lg px-11 bg-black text-gray-300 border-gray-600  focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 "
-              value={`0${number}`} readOnly
+              value={`0${number}`}
+              readOnly
               {...register("number")}
             />
           </div>

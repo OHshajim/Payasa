@@ -70,8 +70,8 @@ const SendNumberValidate = ({ setValid, setNumber }) => {
 
 import PropTypes from "prop-types";
 SendNumberValidate.propTypes = {
-  setValid: PropTypes.bool,
-  setNumber: PropTypes.number,
+  setValid: PropTypes.func,
+  setNumber: PropTypes.func,
 };
 
 export default SendNumberValidate;
