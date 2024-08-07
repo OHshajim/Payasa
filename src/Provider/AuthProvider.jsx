@@ -8,13 +8,16 @@ const AuthProvider = ({ children }) => {
     const userDetails = async () => {
       const id = localStorage.getItem("userID");
       console.log(id);
-      fetch(`${import.meta.env.VITE_URL}/userDetails/${id}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setUser(data);
-          console.log(data);
-          setLoad(false);
-        });
+
+      if (id) {
+        fetch(`${import.meta.env.VITE_URL}/userDetails/${id}`)
+          .then((res) => res.json())
+          .then((data) => {
+            setUser(data);
+            console.log(data);
+            setLoad(false);
+          });
+      }
     };
     userDetails();
   }, []);
