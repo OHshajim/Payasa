@@ -2,7 +2,7 @@ import { FaLock, FaPhoneAlt } from "react-icons/fa";
 import { AuthenticateBtn } from "../../Pages/Register";
 import { useForm } from "react-hook-form";
 
-const SendMoneyForm = ({ number }) => {
+const MoneyTransferForm = ({ number }) => {
   const { user } = useContext(AuthContext);
   const {
     register,
@@ -10,22 +10,35 @@ const SendMoneyForm = ({ number }) => {
     formState: { errors },
   } = useForm();
 
+  const { pathname } = useLocation();
   const onSubmit = async (data) => {
+    const amount = parseFloat(data.amount);
+
+    if (pathname === "/cashOut") {
+      const Charge = (amount * 1.5) / 100;
+      data.charge = Charge;
+      data.service = "Cash Out";
+    } else if (pathname === "/sendMoney") {
+      if (amount > 99) {
+        const Charge = (amount * 5) / 100;
+        data.charge = Charge;
+        data.service = "Send Money";
+      }
+    } else {
+      return alert("Service is not available !!!");
+    }
     console.log(data);
-    
-    if (user.balance < data.amount) {
+    if (user.balance < data.amount + data.charge) {
       return alert("insufficient balance");
     }
-    await fetch(
-      `${import.meta.env.VITE_URL}/sendmoney/${user.number}`,
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+
+    await fetch(`${import.meta.env.VITE_URL}/moneyTransfer/${user.number}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -64,7 +77,7 @@ const SendMoneyForm = ({ number }) => {
               type="number"
               className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-black dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Amount"
-              min={10}
+              min={50}
               {...register("amount", {
                 required: true,
                 pattern: /^(?=.*[0-9]).*$/,
@@ -123,7 +136,8 @@ const SendMoneyForm = ({ number }) => {
 import PropTypes from "prop-types";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-SendMoneyForm.propTypes = {
+import { useLocation } from "react-router-dom";
+MoneyTransferForm.propTypes = {
   number: PropTypes.number,
 };
-export default SendMoneyForm;
+export default MoneyTransferForm;

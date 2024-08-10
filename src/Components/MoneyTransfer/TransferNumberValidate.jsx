@@ -2,7 +2,7 @@ import { AuthenticateBtn } from "../../Pages/Register";
 import { FaPhoneAlt } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 
-const SendNumberValidate = ({ setValid, setNumber }) => {
+const TransferNumberValidate = ({ setValid, setNumber }) => {
   const {
     register,
     handleSubmit,
@@ -73,9 +73,10 @@ const SendNumberValidate = ({ setValid, setNumber }) => {
 
 import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
-SendNumberValidate.propTypes = {
+TransferNumberValidate.propTypes = {
   setValid: PropTypes.func,
   setNumber: PropTypes.func,
 };
 
-export default SendNumberValidate;
+
+export default TransferNumberValidate;

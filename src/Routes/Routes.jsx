@@ -4,8 +4,7 @@ import Layout from "../Layout/Layout";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import PrivetRoute from "./PrivetRoute";
-import SendMoney from "../Pages/SendMoney";
-import CashOut from "../Pages/CashOut";
+import MoneyTransfer from "../Pages/MoneyTransfer";
 
 const Routes = createBrowserRouter([
   {
@@ -24,7 +23,7 @@ const Routes = createBrowserRouter([
         path: "/sendmoney",
         element: (
           <PrivetRoute>
-            <SendMoney />
+            <MoneyTransfer/>
           </PrivetRoute>
         ),
       },
@@ -32,7 +31,7 @@ const Routes = createBrowserRouter([
         path: "/cashOut",
         element: (
           <PrivetRoute>
-            <CashOut/>
+            <MoneyTransfer/>
           </PrivetRoute>
         ),
       },
