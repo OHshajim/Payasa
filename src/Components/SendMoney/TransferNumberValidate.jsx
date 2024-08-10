@@ -8,7 +8,7 @@ const SendNumberValidate = ({ setValid, setNumber }) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const { pathname } = useLocation();
   const onSubmit = async (data) => {
     console.log(data);
     await fetch(`${import.meta.env.VITE_URL}/numberValidate/${data.number}`)
@@ -17,7 +17,10 @@ const SendNumberValidate = ({ setValid, setNumber }) => {
         console.log(data);
         if (data?.success) {
           setNumber(data.number);
-          setValid(true);
+          pathname === "/sendMoney" && setValid(true);
+          if (pathname === "/cashOut") {
+            data.status === "Pending"? setValid(true):alert("this number is not our agent");
+          }
         } else {
           alert(data.message);
         }
@@ -69,6 +72,7 @@ const SendNumberValidate = ({ setValid, setNumber }) => {
 };
 
 import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
 SendNumberValidate.propTypes = {
   setValid: PropTypes.func,
   setNumber: PropTypes.func,

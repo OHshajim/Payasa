@@ -5,17 +5,17 @@ const Service = () => {
     {
       service: "Send Money",
       icon: "/sendmoney.png",
-      route: "/sendmoney",
+      route: "/sendMoney",
     },
     {
       service: "Cash Out",
       icon: "/cashout.png",
-      route: "/sendmoney",
+      route: "/cashOut",
     },
     {
       service: "Add Money",
       icon: "/addmoney.png",
-      route: "/sendmoney",
+      route: "/addMoney",
     },
   ];
   return (
