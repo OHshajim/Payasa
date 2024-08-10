@@ -1,10 +1,13 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FaLock, FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Register = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { setLoad } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -30,7 +33,8 @@ const Register = () => {
         if (access_token && success) {
           localStorage.setItem("access_key", access_token);
           localStorage.setItem("userID", userID);
-          navigate('/')
+          setLoad(false);
+          navigate("/");
         }
       });
   };

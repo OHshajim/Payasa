@@ -2,8 +2,11 @@ import { FaLock, FaPhoneAlt } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthenticateBtn } from "./Register";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
+  const { setLoad } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -25,11 +28,12 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        const { success, access_token ,userID } = data;
+        const { success, access_token, userID } = data;
         if (access_token && success) {
           localStorage.setItem("access_key", access_token);
           localStorage.setItem("userID", userID);
-          navigate('/')
+          setLoad(false);
+          navigate("/");
         }
       });
   };
