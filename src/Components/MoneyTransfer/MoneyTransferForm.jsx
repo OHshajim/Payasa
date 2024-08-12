@@ -42,11 +42,11 @@ const MoneyTransferForm = ({ number }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        // if (data?.success) {
-
-        // } else {
-        //   alert(data.message);
-        // }
+        if (data?.success) {
+          <Navigate to={"/"}/>
+        } else {
+          alert(data.message);
+        }
       });
   };
   return (
@@ -136,7 +136,7 @@ const MoneyTransferForm = ({ number }) => {
 import PropTypes from "prop-types";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 MoneyTransferForm.propTypes = {
   number: PropTypes.number,
 };
