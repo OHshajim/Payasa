@@ -26,7 +26,6 @@ const TransferNumberValidate = ({ setValid, setNumber }) => {
         }
       });
   };
-
   return (
     <section className="container mx-auto">
       <div className=" max-w-screen-sm mx-auto my-20 bg-green-900 p-10 ">
@@ -63,8 +62,7 @@ const TransferNumberValidate = ({ setValid, setNumber }) => {
                 Phone number length must be equal or more than 10 ***
               </span>
             ))}
-
-          {AuthenticateBtn("Next ")}
+          {AuthenticateBtn("Next")}
         </form>
       </div>
     </section>
