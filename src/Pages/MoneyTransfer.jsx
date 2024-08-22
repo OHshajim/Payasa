@@ -18,7 +18,7 @@ const MoneyTransfer = () => {
             ? "Send Money"
             : pathname === "/cashOut"
             ? "Cash Out"
-            : null
+            :  null
         }
       />
       {isValid || (
