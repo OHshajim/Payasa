@@ -5,7 +5,6 @@ import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import PrivetRoute from "./PrivetRoute";
 import MoneyTransfer from "../Pages/MoneyTransfer";
-import AddMoney from "../Pages/AddMoney";
 
 const Routes = createBrowserRouter([
   {
@@ -40,7 +39,7 @@ const Routes = createBrowserRouter([
         path: "/addMoney",
         element: (
           <PrivetRoute>
-            <AddMoney />
+            <MoneyTransfer />
           </PrivetRoute>
         ),
       },
