@@ -19,7 +19,15 @@ const TransferNumberValidate = ({ setValid, setNumber }) => {
           setNumber(data.number);
           pathname === "/sendMoney" && setValid(true);
           if (pathname === "/cashOut") {
-            data.status === "Pending"? setValid(true):alert("this number is not our agent");
+            data.status === "Pending"
+              ? setValid(true)
+              : alert("this number is not our agent");
+          }
+          
+          if (pathname === "/addMoney") {
+            data.status === "Pending"
+              ? setValid(true)
+              : alert("this number is not our agent");
           }
         } else {
           alert(data.message);
@@ -75,6 +83,5 @@ TransferNumberValidate.propTypes = {
   setValid: PropTypes.func,
   setNumber: PropTypes.func,
 };
-
 
 export default TransferNumberValidate;

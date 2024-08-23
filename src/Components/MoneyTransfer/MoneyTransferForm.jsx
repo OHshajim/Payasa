@@ -1,3 +1,7 @@
+import PropTypes from "prop-types";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FaLock, FaPhoneAlt } from "react-icons/fa";
 import { AuthenticateBtn } from "../../Pages/Register";
 import { useForm } from "react-hook-form";
@@ -11,6 +15,8 @@ const MoneyTransferForm = ({ number }) => {
   } = useForm();
 
   const { pathname } = useLocation();
+  const navigate = useNavigate()
+  
   const onSubmit = async (data) => {
     const amount = parseFloat(data.amount);
 
@@ -24,10 +30,30 @@ const MoneyTransferForm = ({ number }) => {
         data.charge = Charge;
         data.service = "Send Money";
       }
-    } else {
+    } else if (pathname === "/addMoney") {
+      await fetch(`${import.meta.env.VITE_URL}/addMoney/${user.number}`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data?.success) {
+            alert(data.message);
+            navigate("/")
+          } else {
+            alert(data.message);
+          }
+        });
+      return ;
+    }
+     else {
       return alert("Service is not available !!!");
     }
-    console.log(data);
+
     if (user.balance < data.amount + data.charge) {
       return alert("insufficient balance");
     }
@@ -43,7 +69,8 @@ const MoneyTransferForm = ({ number }) => {
       .then((data) => {
         console.log(data);
         if (data?.success) {
-          <Navigate to={"/"}/>
+          alert(data.message);
+          navigate("/")
         } else {
           alert(data.message);
         }
@@ -133,10 +160,6 @@ const MoneyTransferForm = ({ number }) => {
   );
 };
 
-import PropTypes from "prop-types";
-import { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
-import { Navigate, useLocation } from "react-router-dom";
 MoneyTransferForm.propTypes = {
   number: PropTypes.number,
 };
