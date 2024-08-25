@@ -1,5 +1,6 @@
 // import { useContext } from "react";
 import Balance from "../Components/Home/Balance";
+import Footer from "../Components/Home/Footer";
 import Nav from "../Components/Home/Nav";
 import Service from "../Components/Home/Service";
 // import { AuthContext } from "../Provider/AuthProvider";
@@ -15,7 +16,7 @@ const Home = () => {
         </div>
         <Service />
       </div>
-
+      <Footer/>
       <div className="absolute bg-green-900 w-screen h-[24vh] top-0 -z-50 banner"></div>
     </div>
   );
