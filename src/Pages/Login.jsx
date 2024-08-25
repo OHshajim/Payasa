@@ -11,7 +11,6 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    // watch,
     formState: { errors },
   } = useForm();
 
@@ -34,6 +33,7 @@ const Login = () => {
           localStorage.setItem("userID", userID);
           setLoad(false);
           navigate("/");
+          
         }
       });
   };
@@ -48,14 +48,11 @@ const Login = () => {
               src="/Logo.png"
               alt="logo"
             />
-
             <h1 className=" mt-4 text-gray-300 ">Welcome back</h1>
-
             <h1 className="mt-4 text-2xl font-medium capitalize lg:text-3xl text-white">
               Login now
             </h1>
           </div>
-
           <div className="flex flex-col justify-center items-center w-full mt-8">
             <form
               className="w-full lg:max-w-xl"
@@ -83,9 +80,9 @@ const Login = () => {
                 </span>
               )) ||
                 (errors.number?.type == "maxLength" && (
-                  <span className="text-red-600 font-semibold text-sm mt-1">
+                <span className="text-red-600 font-semibold text-sm mt-1">
                     Phone number length must be in 14 ***
-                  </span>
+                </span>
                 )) ||
                 (errors.number?.type == "minLength" && (
                   <span className="text-red-600 font-semibold text-sm mt-1">
@@ -110,7 +107,6 @@ const Login = () => {
                   })}
                 />
               </div>
-
               {(errors.pin?.type === "required" && (
                 <span className="text-red-600 font-semibold text-sm mt-1">
                   Pin is required ***
@@ -131,7 +127,7 @@ const Login = () => {
               {AuthenticateBtn("Login")}
               <Link to={"/registration"}>
                 <p className="text-sm text-center mt-3">
-                  Have not any account?{" "}
+                  Have not any account?
                   <span className="  text-[#56c12b] link">Register Now</span>
                 </p>
               </Link>

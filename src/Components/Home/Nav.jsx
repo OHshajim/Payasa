@@ -22,7 +22,7 @@ const Nav = () => {
         </div>
       </div>
 
-      {/* If want to add some contents */}
+     {/* If want to add some contents */}
 
       <div>
         <button className="btn btn-ghost text-xl rounded-full">
