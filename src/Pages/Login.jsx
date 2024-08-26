@@ -33,7 +33,6 @@ const Login = () => {
           localStorage.setItem("userID", userID);
           setLoad(false);
           navigate("/");
-          
         }
       });
   };
@@ -80,9 +79,9 @@ const Login = () => {
                 </span>
               )) ||
                 (errors.number?.type == "maxLength" && (
-                <span className="text-red-600 font-semibold text-sm mt-1">
+                  <span className="text-red-600 font-semibold text-sm mt-1">
                     Phone number length must be in 14 ***
-                </span>
+                  </span>
                 )) ||
                 (errors.number?.type == "minLength" && (
                   <span className="text-red-600 font-semibold text-sm mt-1">
@@ -127,7 +126,7 @@ const Login = () => {
               {AuthenticateBtn("Login")}
               <Link to={"/registration"}>
                 <p className="text-sm text-center mt-3">
-                  Have not any account?
+                  Have not any account?{" "}
                   <span className="  text-[#56c12b] link">Register Now</span>
                 </p>
               </Link>

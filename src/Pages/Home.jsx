@@ -9,15 +9,15 @@ const Home = () => {
   // const { user } = useContext(AuthContext);
   return (
     <div className="relative select-none">
-      <div className="z-50 ">
-        <div className="px-10">
+      <div className="z-50">
+        <div className="mx-14">
           <Nav />
           <Balance />
         </div>
         <Service />
+        <Footer />
       </div>
-      <Footer/>
-      <div className="absolute bg-green-900 w-screen h-[24vh] top-0 -z-50 banner"></div>
+      <div className="absolute bg-green-900 w-screen h-[35vh] top-0 -z-50 banner"></div>
     </div>
   );
 };

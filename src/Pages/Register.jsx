@@ -155,7 +155,7 @@ const Register = () => {
               <Link to={"/login"}>
                 <p className="text-sm text-center mt-3">
                   Already have an account?{" "}
-                  <span className="  text-[#56c12b] link">Login Now</span>
+                  <span className="  text-[#56c12b] link"> Login Now</span>
                 </p>
               </Link>
             </form>
