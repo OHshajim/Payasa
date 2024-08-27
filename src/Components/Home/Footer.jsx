@@ -3,7 +3,7 @@ const Footer = () => {
     <div>
       <footer className="footer bg-zinc-900 p-10">
         <aside className=" m-auto">
-          <div className="w-28">
+          <div className="w-32">
             <img alt="Logo" src={"/Logo(1).png"} />
           </div>
         </aside>
@@ -12,14 +12,14 @@ const Footer = () => {
           <a className="link link-hover">Send Money</a>
           <a className="link link-hover">Cash Out</a>
           <a className="link link-hover">Cash In</a>
-          <a className="link link-hover">Statement</a>
+          <a className="link link-hover">Banking</a>
         </nav>
         <nav className=" mx-auto">
           <h6 className="footer-title">Company</h6>
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
+          <a className="link link-hover">Statement</a>
+          <a className="link link-hover">Loan</a>
         </nav>
         <nav className=" mx-auto">
           <h6 className="footer-title">Legal</h6>

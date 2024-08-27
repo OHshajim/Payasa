@@ -5,6 +5,8 @@ import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import PrivetRoute from "./PrivetRoute";
 import MoneyTransfer from "../Pages/MoneyTransfer";
+import AdminLayout from "../Layout/AdminLayout";
+import AdminDashboard from "../Pages/Admin/AdminDashboard";
 
 const Routes = createBrowserRouter([
   {
@@ -50,6 +52,16 @@ const Routes = createBrowserRouter([
       {
         path: "/registration",
         element: <Register />,
+      },
+    ],
+  },
+  {
+    path: "Admin",
+    element: <AdminLayout />,
+    children: [
+      {
+        path: "home",
+        element: <AdminDashboard />,
       },
     ],
   },

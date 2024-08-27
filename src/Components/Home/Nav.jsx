@@ -16,21 +16,21 @@ const Nav = () => {
         </div>
         <div className="flex flex-col mx-2  items-start">
           <h4 className="font-semibold text-base ">{user?.email}</h4>
-          <p className="text-xs text-zinc-500 font-semibold">
-            {user?.number} - {user?.status}
+          <p className="text-xs text-zinc-400 font-bold">
+            0{user?.number} - {user?.status}
           </p>
         </div>
       </div>
 
-     {/* If want to add some contents */}
+      {/* If want to add some contents */}
 
       <div>
         <button className="btn btn-ghost text-xl rounded-full">
           <IoIosNotifications />
         </button>
       </div>
-      <div className="w-12">
-        <img alt="User" src={user?.image ?? "/Logo(1).png"} />
+      <div className="w-16">
+        <img alt="Logo" src={"/Logo(1).png"} />
       </div>
     </div>
   );
