@@ -1,8 +1,10 @@
+import Interface from "../../Components/AdminHome/Interface";
+
 const AdminDashboard = () => {
   return (
-    <div>
+    <div className="my-10">
       <div>
-        
+        <Interface />
       </div>
     </div>
   );
