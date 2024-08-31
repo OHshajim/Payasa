@@ -7,6 +7,7 @@ import PrivetRoute from "./PrivetRoute";
 import MoneyTransfer from "../Pages/MoneyTransfer";
 import AdminLayout from "../Layout/AdminLayout";
 import AdminDashboard from "../Pages/Admin/AdminDashboard";
+import AgentDashBoard from "../Pages/Agent/AgentDashBoard";
 
 const Routes = createBrowserRouter([
   {
@@ -68,12 +69,12 @@ const Routes = createBrowserRouter([
   {
     path: "Agent",
     element: <AdminLayout />,
-    // children: [
-    //   {
-    //     path: "home",
-    //     element: <AdminDashboard />,
-    //   },
-    // ],
+    children: [
+      {
+        path: "home",
+        element: <AgentDashBoard />,
+      },
+    ],
   },
 ]);
 
