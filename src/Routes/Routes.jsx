@@ -65,6 +65,16 @@ const Routes = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "Agent",
+    element: <AdminLayout />,
+    // children: [
+    //   {
+    //     path: "home",
+    //     element: <AdminDashboard />,
+    //   },
+    // ],
+  },
 ]);
 
 export default Routes;
