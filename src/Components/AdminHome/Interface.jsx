@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+
 const Interface = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
+
   return (
     <div className=" flex justify-between items-center container mx-auto">
       <div className="flex justify-between items-center gap-5">
@@ -15,10 +21,10 @@ const Interface = () => {
             to the Admin Dashboard! Manage your content, monitor user activity,
             and oversee all operations from one place.
           </p>
-          <div className="flex flex-col mx-2  items-start">
-            <h4 className="font-semibold text-base ">Email</h4>
+          <div className="flex flex-col my-2  items-start">
+            <h4 className="font-semibold text-base ">{user.email}</h4>
             <p className="text-xs text-zinc-400 font-bold">
-              {/* 0{user?.number} - {user?.status} */} 0000000000000 - Admin
+              0{user?.number} - {user?.status}
             </p>
           </div>
         </div>
