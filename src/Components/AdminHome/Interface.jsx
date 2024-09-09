@@ -3,7 +3,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const Interface = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
 
   return (
     <div className=" flex justify-between items-center container mx-auto">
@@ -22,7 +22,7 @@ const Interface = () => {
             and oversee all operations from one place.
           </p>
           <div className="flex flex-col my-2  items-start">
-            <h4 className="font-semibold text-base ">{user.email}</h4>
+            <h4 className="font-semibold text-base ">{user?.email}</h4>
             <p className="text-xs text-zinc-400 font-bold">
               0{user?.number} - {user?.status}
             </p>

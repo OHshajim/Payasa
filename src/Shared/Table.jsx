@@ -1,4 +1,6 @@
-const Table = () => {
+
+const Table = ({users}) => {
+
   return (
     <section className="container px-4 mx-auto">
       <div className="sm:flex sm:items-center sm:justify-between">
@@ -9,7 +11,7 @@ const Table = () => {
             </h2>
 
             <span className="px-3 py-1 text-xs   rounded-full bg-gray-800 text-blue-400">
-              240 vendors
+              {users?.length} vendors
             </span>
           </div>
         </div>
@@ -71,40 +73,44 @@ const Table = () => {
                     </th>
                     <th
                       scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-400"
+                      className="px-4 py-3.5 text-sm font-normal text-center  text-gray-400"
                     >
                       Active
                     </th>
                   </tr>
                 </thead>
                 <tbody className=" divide-y divide-gray-700 bg-gray-900">
-                  <tr>
-                    <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                      <div>
-                        <h2 className="font-medium  text-white ">ajshajimmax@gmail.com</h2>
-                        <p className="text-sm font-normal  text-gray-400">
-                          Admin
-                        </p>
-                      </div>
-                    </td>
-                    <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
-                      <div className="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 bg-gray-800">
-                        Activated
-                      </div>
-                    </td>
-                    <td className="px-4 text-gray-200 py-4 text-sm whitespace-nowrap">
-                      01000000000
-                    </td>
+                    {
+                      users?.map((user)=><tr key={user?._id}>
+                      <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                        <div>
+                          <h2 className="font-medium  text-white ">
+                            {user?.email}
+                          </h2>
+                          <p className="text-sm font-normal  text-gray-400">
+                            {user?.status}
+                          </p>
+                        </div>
+                      </td>
+                      <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
+                        <div className="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 bg-gray-800">
+                          Activated
+                        </div>
+                      </td>
+                      <td className="px-4 text-gray-200 py-4 text-sm whitespace-nowrap">
+                        0{user?.number}
+                      </td>
 
-                    <td className="flex gap-5 px-4 py-4 text-sm whitespace-nowrap">
-                      <button className="btn rounded-xl btn-outline  text-gray-300 hover:bg-gray-500">
-                        Update
-                      </button>
-                      <button className="btn rounded-xl btn-outline  text-gray-300 hover:bg-gray-500">
-                        Deactivate
-                      </button>
-                    </td>
-                  </tr>
+                      <td className="flex justify-center gap-5 px-4 py-4 text-sm whitespace-nowrap ">
+                        <button className="btn rounded-xl btn-outline  text-gray-300 hover:bg-gray-500">
+                          Update
+                        </button>
+                        <button className="btn rounded-xl btn-outline  text-gray-300 hover:bg-gray-500">
+                          Deactivate
+                        </button>
+                      </td>
+                    </tr>)
+                    }
                 </tbody>
               </table>
             </div>
@@ -113,7 +119,7 @@ const Table = () => {
       </div>
 
       <div className="mt-6 sm:flex sm:items-center sm:justify-between ">
-        <div className="flex items-center mt-4 gap-x-4 sm:mt-0">
+        {/* <div className="flex items-center mt-4 gap-x-4 sm:mt-0">
           <button className="btn rounded-xl btn-outline  text-gray-300 hover:bg-gray-500">
             Previous
           </button>
@@ -121,10 +127,14 @@ const Table = () => {
           <button className="btn rounded-xl btn-outline  text-gray-300 hover:bg-gray-500">
             Next
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
 };
+import PropTypes from "prop-types";
 
+Table.propTypes = {
+  users: PropTypes.array,
+};
 export default Table;
