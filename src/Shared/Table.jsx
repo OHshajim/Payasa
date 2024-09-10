@@ -1,5 +1,5 @@
 
-const Table = ({users}) => {
+const Table = ({users,setSearch,setQuery}) => {
 
   return (
     <section className="container px-4 mx-auto">
@@ -19,15 +19,15 @@ const Table = ({users}) => {
 
       <div className="mt-6 md:flex md:items-center md:justify-between">
         <div className="inline-flex overflow-hidden  border divide-x rounded-lg bg-gray-900 rtl:flex-row-reverse border-gray-700 divide-gray-700">
-          <button className="px-5 py-2 text-xs font-medium  transition-colors duration-200  sm:text-sm bg-gray-800 text-gray-300">
+          <button onClick={()=>setQuery("All")} className="px-5 py-2 text-xs font-medium  transition-colors duration-200  sm:text-sm hover:bg-gray-100 text-gray-300">
             View all
           </button>
 
-          <button className="px-5 py-2 text-xs font-medium  transition-colors duration-200 sm:text-sm  text-gray-300 hover:bg-gray-100">
+          <button onClick={()=>setQuery("Pending")} className="px-5 py-2 text-xs font-medium  transition-colors duration-200 sm:text-sm  text-gray-300 hover:bg-gray-100">
             General
           </button>
 
-          <button className="px-5 py-2 text-xs font-medium  transition-colors duration-200 sm:text-sm  text-gray-300 hover:bg-gray-100">
+          <button onClick={()=>setQuery("Agent")} className="px-5 py-2 text-xs font-medium  transition-colors duration-200 sm:text-sm  text-gray-300 hover:bg-gray-100">
             Agent
           </button>
         </div>
@@ -35,8 +35,9 @@ const Table = ({users}) => {
         <div className="relative flex items-center mt-4 md:mt-0">
           <span className="absolute"></span>
           <input
-            type="text"
+            type="number"
             placeholder="Search with Number"
+            onChange={()=>setSearch(event.target.value)}
             className="block w-full py-1.5 pr-5  border  rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 bg-gray-900 text-gray-300 border-gray-600 focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
           />
         </div>
@@ -136,5 +137,7 @@ import PropTypes from "prop-types";
 
 Table.propTypes = {
   users: PropTypes.array,
+  setSearch:PropTypes.func,
+  setQuery:PropTypes.func,
 };
 export default Table;

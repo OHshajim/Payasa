@@ -1,8 +1,7 @@
+import AgentService from "../../Components/AgentHome/AgentService";
 import Balance from "../../Components/Home/Balance";
 import Footer from "../../Components/Home/Footer";
 import Nav from "../../Components/Home/Nav";
-// import Service from "../../Components/Home/Service";
-
 const AgentDashBoard = () => {
   return (
     <div className="relative select-none">
@@ -11,7 +10,7 @@ const AgentDashBoard = () => {
           <Nav />
           <Balance />
         </div>
-        {/* <Service /> */}
+        <AgentService />
         <Footer />
       </div>
       <div className="absolute bg-green-900 w-screen h-[35vh] top-0 -z-50 banner"></div>
