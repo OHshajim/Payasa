@@ -19,7 +19,7 @@ const Table = ({users,setSearch,setQuery}) => {
 
       <div className="mt-6 md:flex md:items-center md:justify-between">
         <div className="inline-flex overflow-hidden  border divide-x rounded-lg bg-gray-900 rtl:flex-row-reverse border-gray-700 divide-gray-700">
-          <button onClick={()=>setQuery("All")} className="px-5 py-2 text-xs font-medium  transition-colors duration-200  sm:text-sm hover:bg-gray-100 text-gray-300">
+          <button onClick={()=>setQuery(" ")} className="px-5 py-2 text-xs font-medium  transition-colors duration-200  sm:text-sm hover:bg-gray-100 text-gray-300">
             View all
           </button>
 
