@@ -8,7 +8,7 @@ import Service from "../Components/Home/Service";
 const Home = () => {
   // const { user } = useContext(AuthContext);
   return (
-    <div className="relative select-none">
+    <div className="relative ">
       <div className="z-50">
         <div className="mx-14">
           <Nav />
