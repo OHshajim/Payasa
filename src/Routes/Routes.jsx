@@ -6,10 +6,36 @@ import Login from "../Pages/Login";
 import PrivetRoute from "./PrivetRoute";
 import MoneyTransfer from "../Pages/MoneyTransfer";
 import AdminLayout from "../Layout/AdminLayout";
-import AdminDashboard from "../Pages/Admin/AdminDashboard";
 import AgentDashBoard from "../Pages/Agent/AgentDashBoard";
+import AgentLayout from "../Layout/AgentLayout";
+import Overview from "../Pages/Admin/Overview";
 
 const Routes = createBrowserRouter([
+  // Admin
+  {
+    path: "Admin",
+    element: <AdminLayout />,
+    children: [
+      {
+        path: "OverView",
+        element: <Overview />,
+      },
+    ],
+  },
+
+  // Agent
+  {
+    path: "Agent",
+    element: <AgentLayout />,
+    children: [
+      {
+        path: "",
+        element: <AgentDashBoard />,
+      },
+    ],
+  },
+
+  // General Users
   {
     path: "/",
     element: <Layout />,
@@ -53,26 +79,6 @@ const Routes = createBrowserRouter([
       {
         path: "/registration",
         element: <Register />,
-      },
-    ],
-  },
-  {
-    path: "Admin",
-    element: <AdminLayout />,
-    children: [
-      {
-        path: "home",
-        element: <AdminDashboard />,
-      },
-    ],
-  },
-  {
-    path: "Agent",
-    element: <AdminLayout />,
-    children: [
-      {
-        path: "home",
-        element: <AgentDashBoard />,
       },
     ],
   },
