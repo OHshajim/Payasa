@@ -13,7 +13,7 @@ const AdminNav = () => {
           <div className="flex flex-col justify-center items-center">
             <img
               src={"/Logo.png"}
-            //   alt=""
+              alt="Logo"
               className="rounded-full ring-4 ring-[#0d3d0b] w-20  mb-3"
             />
           </div>

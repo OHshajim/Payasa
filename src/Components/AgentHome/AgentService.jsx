@@ -3,11 +3,6 @@ import { Link } from "react-router-dom";
 const AgentService = () => {
     const services = [
         {
-          service: "Send Money",
-          icon: "/sendmoney.png",
-          route: "/sendMoney",
-        },
-        {
           service: "Cash Out Request",
           icon: "/cashout.png",
           route: "/cashOut",
