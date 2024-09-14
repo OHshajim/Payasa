@@ -1,15 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxios from "../../CustomHooks/useAxios";
+// import useAxios from "../../CustomHooks/useAxios";
+import axios from "axios";
 
 const OverViewInfo = () => {
   const { data: stats = [] } = useQuery({
     queryKey: ["info"],
     queryFn: async () => {
-      const res = await useAxios.get("/StatsInfo");
+      const res = await axios.get("http://localhost:5000/StatsInfo");
       return res.data;
     },
   });
-  console.log(stats);
+  // console.log(stats);
 
   return (
     <div className="w-full  flex justify-between px-20 gap-10 my-10">

@@ -1,3 +1,4 @@
+import DataChart from "../../Components/AdminHome/DataChart";
 import OverViewInfo from "../../Components/AdminHome/OverViewInfo";
 
 const Overview = () => {
@@ -5,6 +6,7 @@ const Overview = () => {
     <div>
       <div>
         <OverViewInfo/>
+        <DataChart />
       </div>
     </div>
   );
