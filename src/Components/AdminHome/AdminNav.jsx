@@ -9,7 +9,7 @@ const AdminNav = () => {
   return (
     <div className="min-h-screen h-full">
       <div className="lg:flex hidden  h-full">
-        <div className="bg-[#5c5c5c] text-[#ffffff]  px-10 xl:px-20 pt-10 ">
+        <div className="bg-[#046A32] text-[#ffffff]  px-10 xl:px-20 pt-10 ">
           <div className="flex flex-col justify-center items-center">
             <img
               src={"/Logo.png"}
@@ -35,7 +35,7 @@ const AdminNav = () => {
             </li>
             <li>
               <NavLink
-                to="/dashboard/addCamp"
+                to="Transactions"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"
