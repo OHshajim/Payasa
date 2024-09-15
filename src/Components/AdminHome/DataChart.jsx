@@ -11,17 +11,18 @@ const DataChart = () => {
       return res.data;
     },
   });
-  console.log(data);
 
   const Info = [
     { name: "Send Money", value: data?.totalSendMoney },
-    { name: "Cash Out", value: data?.totalCashOut },
-    { name: "Cash In", value: data?.totalCashIn },
+    { name: "Cash Out", value: data?.totalCashOut||50 },    
+    { name: "Cash In", value: data?.totalCashIn||10 },
   ];
-  return (
-    <div className="border">
 
-    </div>
+
+  return (
+<div>
+
+</div>
   );
 };
 

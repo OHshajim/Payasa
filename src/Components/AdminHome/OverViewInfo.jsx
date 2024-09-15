@@ -10,7 +10,6 @@ const OverViewInfo = () => {
       return res.data;
     },
   });
-  // console.log(stats);
 
   return (
     <div className="w-full  flex justify-between px-20 gap-10 my-10">
