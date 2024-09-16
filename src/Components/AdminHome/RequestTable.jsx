@@ -3,15 +3,14 @@ import axios from "axios";
 import { useState } from "react";
 import { TbCurrencyTaka } from "react-icons/tb";
 
-const AllClientsTable = () => {
+const RequestTable = () => {
   const [service, setService] = useState("All");
   const { data: transactions = [] } = useQuery({
     queryKey: ["Transactions", service],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/AllUsers?service=${service}`
+        `http://localhost:5000/AllRequests?service=${service}`
       );
-      console.log(res);
       return res.data;
     },
   });
@@ -65,17 +64,20 @@ const AllClientsTable = () => {
               <table className="min-w-full divide-y divide-gray-300">
                 <thead className="bg-[#edededf0]">
                   <tr>
-                    <th className="py-3.5 px-4 text-sm text-zinc-500 text-left">
+                    <th className="py-3.5 px-4 text-sm text-zinc-500 text-center">
                       <span>A/C</span>
                     </th>
                     <th className="px-12 py-3.5 text-sm text-zinc-500 text-left">
                       Status
                     </th>
                     <th className="px-4 py-3.5 text-sm text-zinc-500 text-left">
-                      Balance
+                      Service
                     </th>
                     <th className="px-4 py-3.5 text-sm text-zinc-500 text-left">
                       Date
+                    </th>
+                    <th className="px-4 py-3.5 text-sm text-zinc-500 text-left">
+                      Amount
                     </th>
                     <th className="px-4 py-3.5 text-sm text-zinc-500 text-left">
                       Action
@@ -86,20 +88,26 @@ const AllClientsTable = () => {
                   {transactions.map((transaction) => (
                     <tr key={transaction._id}>
                       <td className="px-4 py-4 text-sm text-black">
-                        <div>{transaction.email}</div>
-                        <p>0{transaction.number}</p>
+                        <div>{transaction.From}</div>
                       </td>
                       <td className="px-12 py-4 text-sm text-black">
-                        {transaction.status}
+                        {transaction.Service}
                       </td>
                       <td className="px-4 py-4 text-sm text-black">
-                        <div className="flex">{transaction.balance}<TbCurrencyTaka className="text-xl " /></div>
+                        <div>{transaction.To}</div>
                       </td>
                       <td className="px-4 py-4 text-sm text-black">
                         {transaction.Date}
                       </td>
-                      <td className="px-4 py-4 text-sm text-rose-400 font-bold">
-                          <button className="btn btn-ghost rounded-xl">Delete</button>
+                      <td className="px-4 py-4 text-sm text-rose-400 font-semibold">
+                        <div className="flex">
+                          + {transaction.Charge}
+                          <TbCurrencyTaka className="text-xl " />
+                        </div>
+                      </td>
+                      <td className="flex px-4 py-4 text-sm text-green-800 font-semibold ">
+                        {transaction.Amount + transaction.Charge}{" "}
+                        <TbCurrencyTaka className="text-xl " />
                       </td>
                     </tr>
                   ))}
@@ -113,4 +121,4 @@ const AllClientsTable = () => {
   );
 };
 
-export default AllClientsTable;
+export default RequestTable;

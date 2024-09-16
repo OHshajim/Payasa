@@ -65,7 +65,7 @@ const AdminNav = () => {
             </li>
             <li>
               <NavLink
-                to="/dashboard/userManagement"
+                to="Requests"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"
@@ -80,7 +80,7 @@ const AdminNav = () => {
             </li>
             <li>
               <NavLink
-                to="/dashboard/manageRegisters"
+                to="Reports"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"
@@ -95,7 +95,7 @@ const AdminNav = () => {
             </li>
             <li>
               <NavLink
-                to="/dashboard/manageRegisters"
+                to="Feedbacks"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"

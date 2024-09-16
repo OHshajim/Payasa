@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
+import { TbCurrencyTaka } from "react-icons/tb";
 
 const TransactionTable = () => {
   const [service, setService] = useState("All");
@@ -99,10 +100,14 @@ const TransactionTable = () => {
                         {transaction.Date}
                       </td>
                       <td className="px-4 py-4 text-sm text-rose-400 font-semibold">
-                        + {transaction.Charge}$
+                        <div className="flex">
+                          + {transaction.Charge}
+                          <TbCurrencyTaka className="text-xl " />
+                        </div>
                       </td>
-                      <td className="px-4 py-4 text-sm text-black">
-                        {transaction.Amount + transaction.Charge} $
+                      <td className="flex px-4 py-4 text-sm text-green-800 font-semibold ">
+                        {transaction.Amount + transaction.Charge}{" "}
+                        <TbCurrencyTaka className="text-xl " />
                       </td>
                     </tr>
                   ))}
