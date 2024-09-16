@@ -10,6 +10,7 @@ import AgentDashBoard from "../Pages/Agent/AgentDashBoard";
 import AgentLayout from "../Layout/AgentLayout";
 import Overview from "../Pages/Admin/Overview";
 import Transactions from "../Pages/Admin/Transactions";
+import Clients from "../Pages/Admin/Clients";
 
 const Routes = createBrowserRouter([
   // Admin
@@ -24,6 +25,10 @@ const Routes = createBrowserRouter([
       {
         path: "Transactions",
         element: <Transactions />,
+      },
+      {
+        path: "Clients",
+        element: <Clients />,
       },
     ],
   },
