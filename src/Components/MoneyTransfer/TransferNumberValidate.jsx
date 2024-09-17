@@ -25,7 +25,7 @@ const TransferNumberValidate = ({ setValid, setNumber }) => {
           }
           
           if (pathname === "/addMoney") {
-            data.status === "Pending"
+            data.status === "Agent"
               ? setValid(true)
               : alert("this number is not our agent");
           }

@@ -13,7 +13,7 @@ const Service = () => {
       route: "/cashOut",
     },
     {
-      service: "Cash In",
+      service: "Add Money",
       icon: "/addmoney.png",
       route: "/addMoney",
     },

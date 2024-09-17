@@ -19,33 +19,6 @@ const TransactionTable = () => {
   return (
     <section className="container mx-auto px-4">
       <div className="mt-6 md:flex md:items-center md:justify-between">
-        <div className="inline-flex overflow-hidden  border divide-x rounded-lg bg-gray-900 border-gray-700 divide-gray-700">
-          <button
-            onClick={() => setService("All")}
-            className="px-5 py-2 text-xs font-medium hover:bg-gray-800 text-gray-300"
-          >
-            View all
-          </button>
-          <button
-            onClick={() => setService("Send Money")}
-            className="px-5 py-2 text-xs font-medium hover:bg-gray-800 text-gray-300"
-          >
-            Send Money
-          </button>
-          <button
-            onClick={() => setService("Cash Out")}
-            className="px-5 py-2 text-xs font-medium hover:bg-gray-800 text-gray-300"
-          >
-            Cash Out
-          </button>
-          <button
-            onClick={() => setService("Cash In")}
-            className="px-5 py-2 text-xs font-medium hover:bg-gray-800 text-gray-300"
-          >
-            Cash In
-          </button>
-        </div>
-
         <div>
           <div className="my-5  mx-auto  bg-transparent border rounded-full focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300  focus-within:ring-opacity-40 mb-7">
             <input
@@ -64,11 +37,11 @@ const TransactionTable = () => {
               <table className="min-w-full divide-y divide-gray-300">
                 <thead className="bg-[#edededf0]">
                   <tr>
-                    <th className="py-3.5 px-4 text-sm text-zinc-500 text-center">
-                      <span>A/C</span>
+                    <th className="py-3.5 px-4 text-sm text-zinc-500 text-left">
+                      A/C (From)
                     </th>
                     <th className="px-12 py-3.5 text-sm text-zinc-500 text-left">
-                      Status
+                      A/C (To)
                     </th>
                     <th className="px-4 py-3.5 text-sm text-zinc-500 text-left">
                       Service
@@ -88,13 +61,13 @@ const TransactionTable = () => {
                   {transactions.map((transaction) => (
                     <tr key={transaction._id}>
                       <td className="px-4 py-4 text-sm text-black">
-                        <div>{transaction.From}</div>
+                        0{transaction.From}
                       </td>
                       <td className="px-12 py-4 text-sm text-black">
-                        {transaction.Service}
+                        0{transaction.To}
                       </td>
                       <td className="px-4 py-4 text-sm text-black">
-                        <div>{transaction.To}</div>
+                        {transaction.Service}
                       </td>
                       <td className="px-4 py-4 text-sm text-black">
                         {transaction.Date}

@@ -5,8 +5,8 @@ import { TbCurrencyTaka } from "react-icons/tb";
 
 const AllClientsTable = () => {
   const [service, setService] = useState("All");
-  const { data: transactions = [] } = useQuery({
-    queryKey: ["Transactions", service],
+  const { data: Clients = [] } = useQuery({
+    queryKey: ["Clients", service],
     queryFn: async () => {
       const res = await axios.get(
         `http://localhost:5000/AllUsers?service=${service}`
@@ -15,38 +15,12 @@ const AllClientsTable = () => {
       return res.data;
     },
   });
-  console.log(transactions);
+  console.log(Clients);
 
   return (
     <section className="container mx-auto px-4">
       <div className="mt-6 md:flex md:items-center md:justify-between">
-        <div className="inline-flex overflow-hidden  border divide-x rounded-lg bg-gray-900 border-gray-700 divide-gray-700">
-          <button
-            onClick={() => setService("All")}
-            className="px-5 py-2 text-xs font-medium hover:bg-gray-800 text-gray-300"
-          >
-            View all
-          </button>
-          <button
-            onClick={() => setService("Send Money")}
-            className="px-5 py-2 text-xs font-medium hover:bg-gray-800 text-gray-300"
-          >
-            Send Money
-          </button>
-          <button
-            onClick={() => setService("Cash Out")}
-            className="px-5 py-2 text-xs font-medium hover:bg-gray-800 text-gray-300"
-          >
-            Cash Out
-          </button>
-          <button
-            onClick={() => setService("Cash In")}
-            className="px-5 py-2 text-xs font-medium hover:bg-gray-800 text-gray-300"
-          >
-            Cash In
-          </button>
-        </div>
-
+        
         <div>
           <div className="my-5  mx-auto  bg-transparent border rounded-full focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300  focus-within:ring-opacity-40 mb-7">
             <input
@@ -83,20 +57,20 @@ const AllClientsTable = () => {
                   </tr>
                 </thead>
                 <tbody className=" divide-y divide-gray-300 ">
-                  {transactions.map((transaction) => (
-                    <tr key={transaction._id}>
+                  {Clients.map((client) => (
+                    <tr key={client._id}>
                       <td className="px-4 py-4 text-sm text-black">
-                        <div>{transaction.email}</div>
-                        <p>0{transaction.number}</p>
+                        <div>{client.email}</div>
+                        <p>0{client.number}</p>
                       </td>
                       <td className="px-12 py-4 text-sm text-black">
-                        {transaction.status}
+                        {client.status}
                       </td>
                       <td className="px-4 py-4 text-sm text-black">
-                        <div className="flex">{transaction.balance}<TbCurrencyTaka className="text-xl " /></div>
+                        <div className="flex">{client.balance}<TbCurrencyTaka className="text-xl " /></div>
                       </td>
                       <td className="px-4 py-4 text-sm text-black">
-                        {transaction.Date}
+                        {client.date}
                       </td>
                       <td className="px-4 py-4 text-sm text-rose-400 font-bold">
                           <button className="btn btn-ghost rounded-xl">Delete</button>
