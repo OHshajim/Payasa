@@ -12,6 +12,7 @@ import Overview from "../Pages/Admin/Overview";
 import Transactions from "../Pages/Admin/Transactions";
 import Clients from "../Pages/Admin/Clients";
 import Requests from "../Pages/Admin/Requests";
+import AgentAddMoney from "../Pages/Agent/AgentAddMoney";
 
 const Routes = createBrowserRouter([
   // Admin
@@ -46,6 +47,10 @@ const Routes = createBrowserRouter([
       {
         path: "",
         element: <AgentDashBoard />,
+      },
+      {
+        path: "AddMoneyRequest",
+        element: <AgentAddMoney />,
       },
     ],
   },

@@ -1,23 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { useState } from "react";
 import { SiGooglebigquery } from "react-icons/si";
 import { TbCurrencyTaka } from "react-icons/tb";
 
-const TransactionTable = () => {
-  const [service, setService] = useState("All");
-
-  const { data: transactions = [] } = useQuery({
-    queryKey: ["Transactions", service],
-    queryFn: async () => {
-      const res = await axios.get(
-        `http://localhost:5000/AllTransactions?service=${service}`
-      );
-      return res.data;
-    },
-  });
-  console.log(transactions);
-
+const TransectionTable = ({ transactions, setService }) => {
   return (
     <section className="container mx-auto px-4">
       <div className="dropdown max-w-52 w-full mt-4">
@@ -141,4 +125,4 @@ const TransactionTable = () => {
   );
 };
 
-export default TransactionTable;
+export default TransectionTable;

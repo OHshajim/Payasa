@@ -1,16 +1,19 @@
-import axios from "axios";
+import { useContext, useState } from "react";
+import ServiceNav from "../../Shared/ServiceNav";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import axios from "axios";
+import { AuthContext } from "../../Provider/AuthProvider";
 import RequestTable from "../../Shared/RequestTable";
 import Swal from "sweetalert2";
 
-const Requests = () => {
+const AgentAddMoney = () => {
   const [filter, setFilter] = useState("All");
+  const { user } = useContext(AuthContext);
   const { data: Requests = [], refetch: reload } = useQuery({
     queryKey: ["Requests", filter],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/AllRequests?filter=${filter}`
+        `http://localhost:5000/AgentRequests${user.number}?filter=${filter}`
       );
       return res.data;
     },
@@ -67,15 +70,17 @@ const Requests = () => {
       }
     });
   };
-
   return (
-    <RequestTable
-      Requests={Requests}
-      DeleteRequest={DeleteRequest}
-      RequestConfirmation={RequestConfirmation}
-      setFilter={setFilter}
-    />
+    <div className="">
+      <ServiceNav service={"Add money Request"} />
+      <RequestTable
+        Requests={Requests}
+        DeleteRequest={DeleteRequest}
+        RequestConfirmation={RequestConfirmation}
+        setFilter={setFilter}
+      />
+    </div>
   );
 };
 
-export default Requests;
+export default AgentAddMoney;

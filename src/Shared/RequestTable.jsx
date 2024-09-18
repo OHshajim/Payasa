@@ -1,34 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { useState } from "react";
 import { SiGooglebigquery } from "react-icons/si";
 import { TbCurrencyTaka } from "react-icons/tb";
 
-const RequestTable = () => {
-  const [filter, setFilter] = useState("All");
-  const { data: Requests = [] } = useQuery({
-    queryKey: ["Requests", filter],
-    queryFn: async () => {
-      const res = await axios.get(
-        `http://localhost:5000/AllRequests?filter=${filter}`
-      );
-      return res.data;
-    },
-  });
-  console.log(Requests);
-  const RequestConfirmation = async (id) => {
-    const result = await axios.patch(
-      `http://localhost:5000/RequestConfirmation${id}`
-    );
-    console.log(result);
-  };
-  const DeleteRequest = async (id) => {
-    const result = await axios.delete(
-      `http://localhost:5000/RequestDelete${id}`
-    );
-    console.log(result);
-  };
-
+const RequestTable = ({
+  Requests,
+  DeleteRequest,
+  RequestConfirmation,
+  setFilter,
+}) => {
   return (
     <section className="container mx-auto px-4">
       <div className="dropdown max-w-52 w-full mt-4">
@@ -125,11 +103,11 @@ const RequestTable = () => {
                       <td>
                         <div
                           className={`text-sm font-semibold border-2 max-w-fit px-3 py-2 rounded-full
-                          ${
-                            request.Status === "Confirmed"
-                              ? "text-green-500 border-green-500"
-                              : " text-stone-500 border-stone-400"
-                          }`}
+                              ${
+                                request.Status === "Confirmed"
+                                  ? "text-green-500 border-green-500"
+                                  : " text-stone-500 border-stone-400"
+                              }`}
                         >
                           {request.Status}
                         </div>
