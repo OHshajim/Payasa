@@ -20,7 +20,7 @@ const OverViewInfo = () => {
             <div className="stat-title text-zinc-300 font-medium">{stat.name}</div>
             <div className="stat-value flex items-center">{stat.number} 
               <div><TbCurrencyTaka 
-              className={`text-4xl ${stat.name=="General Customers" || stat.name=="Agents"? "hidden":""} `}/></div>
+              className={`text-4xl ${stat.name !=="Total Transactions Amount" ? "hidden":""} `}/></div>
               </div>
           </div>
         </div>

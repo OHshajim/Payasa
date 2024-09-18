@@ -1,15 +1,17 @@
+import { CiLogout } from "react-icons/ci";
 import { FaUsers } from "react-icons/fa";
 import { FcFeedback, FcMoneyTransfer } from "react-icons/fc";
 import { IoGitPullRequestSharp } from "react-icons/io5";
 import { MdReport, MdWindow } from "react-icons/md";
 
 import { NavLink } from "react-router-dom";
+import LogOut from "../../Shared/LogOut";
 
 const AdminNav = () => {
   return (
     <div className="min-h-screen h-full">
       <div className="lg:flex hidden  h-full">
-        <div className="bg-[#046A32] text-[#ffffff]  px-10 xl:px-20 pt-10 ">
+        <div className="bg-[#046A32] text-[#ffffff]  px-10 xl:px-20 pt-10 flex-col flex h-full ">
           <div className="flex flex-col justify-center items-center">
             <img
               src={"/Logo.png"}
@@ -110,6 +112,9 @@ const AdminNav = () => {
             </li>
 
           </ul>
+          <div className="flex items-end h-full py-5">
+            <button onClick={()=>LogOut()} className="flex items-center btn btn-ghost text-rose-400 text-lg font-bold rounded-xl hover:bg-green-950"> <CiLogout className="text-2xl"/>LogOut</button>
+          </div>
         </div>
       </div>
     </div>

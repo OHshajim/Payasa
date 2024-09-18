@@ -16,11 +16,12 @@ const AllClientsTable = () => {
     },
   });
   console.log(Clients);
-
+  const DeleteClient = async (id) => {
+    const result = await axios.delete(`http://localhost:5000/deleteClient${id}`)
+  };
   return (
     <section className="container mx-auto px-4">
       <div className="mt-6 md:flex md:items-center md:justify-between">
-        
         <div>
           <div className="my-5  mx-auto  bg-transparent border rounded-full focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300  focus-within:ring-opacity-40 mb-7">
             <input
@@ -42,7 +43,7 @@ const AllClientsTable = () => {
                     <th className="py-3.5 px-4 text-sm text-zinc-500 text-left">
                       <span>A/C</span>
                     </th>
-                    <th className="px-12 py-3.5 text-sm text-zinc-500 text-left">
+                    <th className="px-4 py-3.5 text-sm text-zinc-500 text-left">
                       Status
                     </th>
                     <th className="px-4 py-3.5 text-sm text-zinc-500 text-left">
@@ -63,17 +64,25 @@ const AllClientsTable = () => {
                         <div>{client.email}</div>
                         <p>0{client.number}</p>
                       </td>
-                      <td className="px-12 py-4 text-sm text-black">
+                      <td className="px-4 py-4 text-sm text-black">
                         {client.status}
                       </td>
                       <td className="px-4 py-4 text-sm text-black">
-                        <div className="flex">{client.balance}<TbCurrencyTaka className="text-xl " /></div>
+                        <div className="flex">
+                          {client.balance}
+                          <TbCurrencyTaka className="text-xl " />
+                        </div>
                       </td>
                       <td className="px-4 py-4 text-sm text-black">
                         {client.date}
                       </td>
                       <td className="px-4 py-4 text-sm text-rose-400 font-bold">
-                          <button className="btn btn-ghost rounded-xl">Delete</button>
+                        <button
+                          onClick={() => DeleteClient(client._id)}
+                          className="btn btn-ghost rounded-xl"
+                        >
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   ))}
