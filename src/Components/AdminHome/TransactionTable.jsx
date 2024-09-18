@@ -125,7 +125,7 @@ const TransactionTable = () => {
                           <TbCurrencyTaka className="text-xl " />
                         </div>
                       </td>
-                      <td className="flex px-4 py-4 text-sm text-green-800 font-semibold ">
+                      <td className="flex px-4 py-4 text-sm text-green-600 font-semibold ">
                         {transaction.Amount + transaction.Charge}{" "}
                         <TbCurrencyTaka className="text-xl " />
                       </td>

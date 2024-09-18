@@ -1,15 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
+import { SiGooglebigquery } from "react-icons/si";
 import { TbCurrencyTaka } from "react-icons/tb";
 
 const RequestTable = () => {
-  const [service, setService] = useState("All");
+  const [filter, setFilter] = useState("All");
   const { data: Requests = [] } = useQuery({
-    queryKey: ["Requests", service],
+    queryKey: ["Requests", filter],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/AllRequests?service=${service}`
+        `http://localhost:5000/AllRequests?filter=${filter}`
       );
       return res.data;
     },
@@ -30,18 +31,50 @@ const RequestTable = () => {
 
   return (
     <section className="container mx-auto px-4">
-      <div className="mt-6 md:flex md:items-center md:justify-between">
-
-
-        <div>
-          <div className="my-5  mx-auto  bg-transparent border rounded-full focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300  focus-within:ring-opacity-40 mb-7">
-            <input
-              type="text"
-              placeholder="Search by Number"
-              className="flex-1 h-10 px-3 pr-2 m-1 text-gray-700 placeholder-gray-400 bg-transparent border-none appearance-none  focus:outline-none focus:placeholder-transparent focus:ring-0"
-            />
-          </div>
+      <div className="dropdown max-w-52 w-full mt-4">
+        <div
+          tabIndex={0}
+          role="button"
+          className=" w-full btn m-1 rounded-xl bg-green-100 text-green-900 border-none hover:bg-green-600 hover:text-white font-semibold "
+        >
+          <SiGooglebigquery />
+          Filter
         </div>
+        <ul
+          tabIndex={0}
+          className="dropdown-content menu bg-green-50 z-[1] w-52 p-2  rounded-xl text-green-900 font-semibold"
+        >
+          <li>
+            <button
+              onClick={() => {
+                setFilter("All");
+              }}
+              className="focus:text-green-700 focus:font-bold focus:scale-105"
+            >
+              All
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => {
+                setFilter("Pending");
+              }}
+              className="focus:text-green-700 focus:font-bold focus:scale-105"
+            >
+              Pending
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => {
+                setFilter("Confirmed");
+              }}
+              className="focus:text-green-700 focus:font-bold focus:scale-105"
+            >
+              Confirmed
+            </button>
+          </li>
+        </ul>
       </div>
 
       <div className="flex flex-col mt-6">
@@ -83,13 +116,13 @@ const RequestTable = () => {
                       <td className="px-4 py-4 text-sm text-black">
                         {request.Date}
                       </td>
-                      <td className="px-4 py-4 text-sm text-green-800 font-semibold">
+                      <td className="px-4 py-4 text-sm text-green-600 font-semibold">
                         <div className="flex">
                           {request.Amount}
                           <TbCurrencyTaka className="text-xl " />
                         </div>
                       </td>
-                      <td >
+                      <td>
                         <div
                           className={`text-sm font-semibold border-2 max-w-fit px-3 py-2 rounded-full
                           ${
