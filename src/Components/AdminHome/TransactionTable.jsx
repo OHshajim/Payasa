@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
+import { SiGooglebigquery } from "react-icons/si";
 import { TbCurrencyTaka } from "react-icons/tb";
 
 const TransactionTable = () => {
   const [service, setService] = useState("All");
+
   const { data: transactions = [] } = useQuery({
     queryKey: ["Transactions", service],
     queryFn: async () => {
@@ -18,52 +20,60 @@ const TransactionTable = () => {
 
   return (
     <section className="container mx-auto px-4">
-      <div className="mt-6 md:flex md:items-center md:justify-between">
-        <div>
-          <div className="dropdown">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn m-1 rounded-xl bg-green-50 text-green-900 border-none hover:bg-green-600 hover:text-white font-semibold"
-            >
-              Sort by Service
-            </div>
-            <ul
-              tabIndex={0}
-              className="dropdown-content menu bg-green-50 z-[1] w-52 p-2  rounded-xl text-green-900 font-semibold"
-            >
-              <li>
-                <button onClick={()=>{setService("All")}} className="focus:text-green-700 focus:font-bold focus:scale-105">
-                  All
-                </button>
-              </li>
-              <li>
-                <button onClick={()=>{setService("Send Money")}} className="focus:text-green-700 focus:font-bold focus:scale-105">
-                  Send Money
-                </button>
-              </li>
-              <li >
-                <button onClick={()=>{setService("Cash Out")}} className="focus:text-green-700 focus:font-bold focus:scale-105">
-                Cash Out
-                </button>
-              </li>
-              <li >
-                <button onClick={()=>{setService("Add Money")}} className="focus:text-green-700 focus:font-bold focus:scale-105">
-                  Add Money
-                </button>
-              </li>
-            </ul>
-          </div>
+      <div className="dropdown max-w-52 w-full mt-4">
+        <div
+          tabIndex={0}
+          role="button"
+          className=" w-full btn m-1 rounded-xl bg-green-100 text-green-900 border-none hover:bg-green-600 hover:text-white font-semibold "
+        >
+          <SiGooglebigquery />
+          Filter
         </div>
-        <div>
-          <div className="my-5  mx-auto  bg-transparent border rounded-full focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300  focus-within:ring-opacity-40 mb-7">
-            <input
-              type="text"
-              placeholder="Search by Number"
-              className="flex-1 h-10 px-3 pr-2 m-1 text-gray-700 placeholder-gray-400 bg-transparent border-none appearance-none  focus:outline-none focus:placeholder-transparent focus:ring-0"
-            />
-          </div>
-        </div>
+        <ul
+          tabIndex={0}
+          className="dropdown-content menu bg-green-50 z-[1] w-52 p-2  rounded-xl text-green-900 font-semibold"
+        >
+          <li>
+            <button
+              onClick={() => {
+                setService("All");
+              }}
+              className="focus:text-green-700 focus:font-bold focus:scale-105"
+            >
+              All
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => {
+                setService("Send Money");
+              }}
+              className="focus:text-green-700 focus:font-bold focus:scale-105"
+            >
+              Send Money
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => {
+                setService("Cash Out");
+              }}
+              className="focus:text-green-700 focus:font-bold focus:scale-105"
+            >
+              Cash Out
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => {
+                setService("Add Money");
+              }}
+              className="focus:text-green-700 focus:font-bold focus:scale-105"
+            >
+              Add Money
+            </button>
+          </li>
+        </ul>
       </div>
 
       <div className="flex flex-col mt-6">
