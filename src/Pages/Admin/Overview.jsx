@@ -1,4 +1,4 @@
-import DataChart from "../../Components/AdminHome/DataChart";
+// import DataChart from "../../Components/AdminHome/DataChart";
 import OverViewInfo from "../../Components/AdminHome/OverViewInfo";
 
 const Overview = () => {
@@ -6,7 +6,7 @@ const Overview = () => {
     <div>
       <div>
         <OverViewInfo/>
-        <DataChart />
+        {/* <DataChart /> */}
       </div>
     </div>
   );

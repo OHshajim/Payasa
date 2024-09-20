@@ -4,6 +4,7 @@ import { AuthenticateBtn } from "./Register";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import axios from "axios";
 
 const Login = () => {
   const { setLoad } = useContext(AuthContext);
@@ -16,25 +17,16 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     const User = data;
-    console.log(User);
-    await fetch(`${import.meta.env.VITE_URL}/authentication/login`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(User),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        const { success, access_token, userID } = data;
-        if (access_token && success) {
-          localStorage.setItem("access_key", access_token);
-          localStorage.setItem("userID", userID);
-          setLoad(false);
-          navigate("/");
-        }
-      });
+    await axios.post("http://localhost:5000/authentication/login", User)
+    .then((data) => {
+      const { success, access_token, userID } = data.data;
+      if (access_token && success) {
+        localStorage.setItem("access_key", access_token);
+        localStorage.setItem("userID", userID);
+        setLoad(false);
+        navigate("/");
+      }
+    });
   };
 
   return (

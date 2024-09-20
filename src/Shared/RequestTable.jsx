@@ -1,12 +1,56 @@
 import { SiGooglebigquery } from "react-icons/si";
 import { TbCurrencyTaka } from "react-icons/tb";
+import Swal from "sweetalert2";
+import useAxios from "../CustomHooks/useAxios";
 
-const RequestTable = ({
-  Requests,
-  DeleteRequest,
-  RequestConfirmation,
-  setFilter,
-}) => {
+const RequestTable = ({ Requests, reload, setFilter }) => {
+  const axiosSecure = useAxios();
+  const RequestConfirmation = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Are you want to confirm this request ???",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, I want",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const result = await axiosSecure.patch(`/RequestConfirmation${id}`);
+        if (result.status == 200) {
+          reload();
+          Swal.fire({
+            title: "Successful!",
+            text: result.data.message,
+            icon: "success",
+          });
+        }
+      }
+    });
+  };
+  const DeleteRequest = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Are you want to Delete this request ???",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, I want",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const result = await axiosSecure.delete(`/RequestDelete${id}`);
+        if (result.status == 200) {
+          reload();
+          Swal.fire({
+            title: "Successful!",
+            text: result.data.message,
+            icon: "success",
+          });
+        }
+      }
+    });
+  };
   return (
     <section className="container mx-auto px-4">
       <div className="dropdown max-w-52 w-full mt-4">

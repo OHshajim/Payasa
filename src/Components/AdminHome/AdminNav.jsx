@@ -5,9 +5,9 @@ import { IoGitPullRequestSharp } from "react-icons/io5";
 import { MdReport, MdWindow } from "react-icons/md";
 
 import { NavLink } from "react-router-dom";
-import LogOut from "../../Shared/LogOut";
 
 const AdminNav = () => {
+
   return (
     <div className="min-h-screen h-full">
       <div className="lg:flex hidden  h-full">
@@ -113,7 +113,7 @@ const AdminNav = () => {
 
           </ul>
           <div className="flex items-end h-full py-5">
-            <button onClick={()=>LogOut()} className="flex items-center btn btn-ghost text-rose-400 text-lg font-bold rounded-xl hover:bg-green-950"> <CiLogout className="text-2xl"/>LogOut</button>
+            <button className="flex items-center btn btn-ghost text-rose-400 text-lg font-bold rounded-xl hover:bg-green-950"> <CiLogout className="text-2xl"/>LogOut</button>
           </div>
         </div>
       </div>

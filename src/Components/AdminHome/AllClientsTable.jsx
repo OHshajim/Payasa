@@ -1,18 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { useState } from "react";
 import { SiGooglebigquery } from "react-icons/si";
 import { TbCurrencyTaka } from "react-icons/tb";
 import Swal from "sweetalert2";
+import useAxios from "../../CustomHooks/useAxios";
 
 const AllClientsTable = () => {
   const [type, setType] = useState("All");
+  const axiosSecure = useAxios();
   const { data: Clients = [], refetch: reload } = useQuery({
     queryKey: ["Clients", type],
     queryFn: async () => {
-      const res = await axios.get(
-        `http://localhost:5000/AllUsers?type=${type}`
-      );
+      const res = await axiosSecure.get(`/AllUsers?type=${type}`);
       console.log(res);
       return res.data;
     },
@@ -28,9 +27,7 @@ const AllClientsTable = () => {
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const result = await axios.delete(
-          `http://localhost:5000/deleteClient${id}`
-        );
+        const result = await axiosSecure.delete(`/deleteClient/${id}`);
         console.log(result);
         if (result.status == 200) {
           reload();
@@ -54,8 +51,8 @@ const AllClientsTable = () => {
       confirmButtonText: "Yes, Update it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const result = await axios.patch(
-          `http://localhost:5000/UpdateAccount${client._id}?type=${client.status}`
+        const result = await axiosSecure.patch(
+          `/UpdateAccount/${client._id}?type=${client.status}`
         );
         console.log(result);
         if (result.status == 200) {
@@ -156,9 +153,7 @@ const AllClientsTable = () => {
                   {Clients.map((client) => (
                     <tr key={client._id}>
                       <td className="px-4 py-4 text-sm text-zinc-700 font-semibold">
-                        <h3 className="font-bold text-base">
-                          {client.email}
-                        </h3>
+                        <h3 className="font-bold text-base">{client.email}</h3>
                         <p>0{client.number}</p>
                       </td>
                       <td className="px-4 py-4 text-sm ">

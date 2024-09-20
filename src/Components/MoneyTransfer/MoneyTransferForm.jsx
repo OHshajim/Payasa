@@ -5,9 +5,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FaLock, FaPhoneAlt } from "react-icons/fa";
 import { AuthenticateBtn } from "../../Pages/Register";
 import { useForm } from "react-hook-form";
+import useAxios from "../../CustomHooks/useAxios";
 
 const MoneyTransferForm = ({ number }) => {
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxios();
   const {
     register,
     handleSubmit,
@@ -31,16 +33,8 @@ const MoneyTransferForm = ({ number }) => {
         data.service = "Send Money";
       }
     } else if (pathname === "/addMoney") {
-      await fetch(`${import.meta.env.VITE_URL}/addMoney/${user.number}`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-        .then((res) => res.json())
+      await axiosSecure.post(`/addMoney/${user.number}`, data)
         .then((data) => {
-          console.log(data);
           if (data?.success) {
             alert(data.message);
             navigate("/")
@@ -58,16 +52,8 @@ const MoneyTransferForm = ({ number }) => {
       return alert("insufficient balance");
     }
 
-    await fetch(`${import.meta.env.VITE_URL}/moneyTransfer/${user.number}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
+    await axiosSecure(`/moneyTransfer/${user.number}`, data)
       .then((data) => {
-        console.log(data);
         if (data?.success) {
           alert(data.message);
           navigate("/")

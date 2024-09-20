@@ -1,6 +1,9 @@
 const LogOut = () => {
-  window.localStorage.removeItem("access_key");
-  window.localStorage.removeItem("userID");
+    return (
+        <div>
+            
+        </div>
+    );
 };
 
 export default LogOut;

@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import useAxios from "../../CustomHooks/useAxios";
 
 
 
 const DataChart = () => {
+  const axiosSecure = useAxios();
   const { data } = useQuery({
     queryKey: [],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/chartOfServices");
+      const res = await axiosSecure.get("/chartOfServices");
       return res.data;
     },
   });

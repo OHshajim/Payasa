@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-// import useAxios from "../../CustomHooks/useAxios";
-import axios from "axios";
 import { TbCurrencyTaka } from "react-icons/tb";
+import useAxios from "../../CustomHooks/useAxios";
 
 const OverViewInfo = () => {
+  const axiosSecure = useAxios();
   const { data: stats = [] } = useQuery({
     queryKey: ["info"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/StatsInfo");
+      const res = await axiosSecure.get("/StatsInfo");
       return res.data;
     },
   });

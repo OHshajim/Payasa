@@ -4,6 +4,7 @@ import { FaLock, FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import axios from "axios";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -11,25 +12,16 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    // watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (data) => {
     const NewUser = data;
-    console.log(NewUser);
 
-    await fetch(`${import.meta.env.VITE_URL}/authentication/register`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(NewUser),
-    })
-      .then((res) => res.json())
+    await axios
+      .post('http://localhost:5000/authentication/register', NewUser)
       .then((data) => {
-        console.log(data);
-        const { success, access_token, userID } = data;
+        const { success, access_token, userID } = data.data;
         if (access_token && success) {
           localStorage.setItem("access_key", access_token);
           localStorage.setItem("userID", userID);

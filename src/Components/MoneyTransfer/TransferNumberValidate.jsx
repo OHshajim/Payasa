@@ -3,6 +3,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 
 const TransferNumberValidate = ({ setValid, setNumber }) => {
+  const axiosSecure = useAxios();
   const {
     register,
     handleSubmit,
@@ -10,9 +11,7 @@ const TransferNumberValidate = ({ setValid, setNumber }) => {
   } = useForm();
   const { pathname } = useLocation();
   const onSubmit = async (data) => {
-    console.log(data);
-    await fetch(`${import.meta.env.VITE_URL}/numberValidate/${data.number}`)
-      .then((res) => res.json())
+    await axiosSecure.get(`/numberValidate/${data.number}`)
       .then((data) => {
         console.log(data);
         if (data?.success) {
@@ -79,6 +78,7 @@ const TransferNumberValidate = ({ setValid, setNumber }) => {
 
 import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
+import useAxios from "../../CustomHooks/useAxios";
 TransferNumberValidate.propTypes = {
   setValid: PropTypes.func,
   setNumber: PropTypes.func,
