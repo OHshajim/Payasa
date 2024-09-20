@@ -30,7 +30,7 @@ const Login = () => {
   };
 
   return (
-    <section className="min-h-screen flex justify-center items-center py-10 select-none">
+    <section className="min-h-screen flex justify-center items-center py-10 select-none bg-black">
       <div className="container px-6 mx-auto w-full ">
         <div className="flex flex-col justify-center items-center w-full">
           <div className="w-full flex flex-col justify-center items-center">
@@ -50,13 +50,13 @@ const Login = () => {
               onSubmit={handleSubmit(onSubmit)}
             >
               {/* Number */}
-              <div className="relative flex items-center mt-4">
+              <div className="relative flex items-center mt-4 ">
                 <span className="absolute">
-                  <FaPhoneAlt className="text-xl ml-3" />
+                  <FaPhoneAlt className="text-xl ml-3 text-gray-300" />
                 </span>
                 <input
                   type="number"
-                  className="block w-full py-3 text-gray-700 border rounded-lg px-11 dark:bg-black dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="block w-full py-3 border rounded-lg px-11 bg-black text-gray-300 border-gray-600  focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                   placeholder="Phone Number"
                   {...register("number", {
                     required: true,
@@ -84,11 +84,11 @@ const Login = () => {
               {/* Pin */}
               <div className="relative flex items-center mt-4">
                 <span className="absolute">
-                  <FaLock className="text-xl ml-3 " />
+                  <FaLock className="text-xl ml-3 text-gray-300" />
                 </span>
                 <input
                   type="password"
-                  className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-black dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="block w-full py-3 border rounded-lg px-11 bg-black text-gray-300 border-gray-600  focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                   placeholder="Pin"
                   {...register("pin", {
                     required: true,
@@ -117,7 +117,7 @@ const Login = () => {
 
               {AuthenticateBtn("Login")}
               <Link to={"/registration"}>
-                <p className="text-sm text-center mt-3">
+                <p className="text-sm text-center mt-3 text-gray-400">
                   Have not any account?{" "}
                   <span className="  text-[#56c12b] link">Register Now</span>
                 </p>

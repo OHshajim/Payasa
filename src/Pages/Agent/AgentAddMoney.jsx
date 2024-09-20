@@ -8,25 +8,24 @@ import useAxios from "../../CustomHooks/useAxios";
 const AgentAddMoney = () => {
   const [filter, setFilter] = useState("All");
   const axiosSecure = useAxios();
-  const { user } = useContext(AuthContext);
-  const { data: Requests = [], refetch: reload } = useQuery({
+  const { user, loading: authLoading } = useContext(AuthContext);
+  
+  const { 
+    data: Requests = [], 
+    refetch: reload, 
+  } = useQuery({
     queryKey: ["Requests", filter],
     queryFn: async () => {
-      const res = await axiosSecure.get(
-        `/AgentRequests/:${user.number}?filter=${filter}`
-      );
+      const res = await axiosSecure.get(`/AgentRequests/${user.number}?filter=${filter}`);
       return res.data;
     },
+    enabled: !authLoading && !!user, 
   });
 
   return (
     <div className="">
       <ServiceNav service={"Add money Request"} />
-      <RequestTable
-        Requests={Requests}
-        setFilter={setFilter}
-        reload={reload}
-      />
+      <RequestTable Requests={Requests} setFilter={setFilter} reload={reload} />
     </div>
   );
 };

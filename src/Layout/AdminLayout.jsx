@@ -28,7 +28,7 @@ const AdminLayout = () => {
             <img
               className="w-12 rounded-full ml-2"
               alt="Tailwind CSS Navbar component"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+              src="https://i.ibb.co.com/6gR6rQ6/Shajim.png"
             />
           </div>
         </div>
