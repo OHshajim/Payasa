@@ -2,9 +2,9 @@ import { BiArrowBack } from "react-icons/bi";
 
 const ServiceNav = ({ service }) => {
   return (
-    <div className="navbar  bg-green-950 select-none">
+    <div className="navbar  bg-green-900 select-none text-white">
       <Link to={"/"}>
-        <button className="btn btn-ghost text-2xl rounded-full ">
+        <button className="btn btn-ghost text-2xl rounded-full">
           <BiArrowBack />
         </button>
       </Link>
