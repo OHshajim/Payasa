@@ -3,6 +3,7 @@ import Footer from "../Components/Home/Footer";
 import Nav from "../Components/Home/Nav";
 import Service from "../Components/Home/Service";
 import Banner from "../Shared/Banner";
+import Testimonial from "../Shared/Testimonial";
 
 const Home = () => {
   return (
@@ -13,7 +14,8 @@ const Home = () => {
           <Balance />
         </div>
         <Service />
-        <Banner/>
+        <Banner />
+        <Testimonial />
         <Footer />
       </div>
     </div>
