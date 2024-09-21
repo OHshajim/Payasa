@@ -1,23 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Service = () => {
-  const services = [
-    {
-      service: "Send Money",
-      icon: "/sendmoney.png",
-      route: "/sendMoney",
-    },
-    {
-      service: "Cash Out",
-      icon: "/cashout.png",
-      route: "/cashOut",
-    },
-    {
-      service: "Add Money",
-      icon: "/addmoney.png",
-      route: "/addMoney",
-    },
-  ];
+const Service = ({services}) => {
   return (
     <div className="bg-green-900 ">
       <div className="rounded-t-[60px] bg-white px-12 py-4">

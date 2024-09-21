@@ -121,7 +121,7 @@ const RequestTable = ({ Requests, reload, setFilter }) => {
                     <th className="px-4 py-3.5 text-sm text-zinc-500 text-left">
                       Status
                     </th>
-                    <th className="px-4 py-3.5 text-sm text-zinc-500 text-left">
+                    <th className="px-4 py-3.5 text-sm text-zinc-500 text-center">
                       Action
                     </th>
                   </tr>
@@ -156,10 +156,10 @@ const RequestTable = ({ Requests, reload, setFilter }) => {
                           {request.Status}
                         </div>
                       </td>
-                      <td className="px-4 py-4 text-sm">
+                      <td className="px-4 py-4 text-sm gap-4  flex justify-center">
                         <button
                           onClick={() => RequestConfirmation(request._id)}
-                          className={`btn btn-outline rounded-xl text-green-600 hover:text-green-700 hover:bg-green-50 font-semibold ${
+                          className={`btn btn-ghost rounded-xl text-green-600 hover:text-green-700 hover:bg-green-50 font-semibold ${
                             request.Status === "Confirmed" && "hidden"
                           }`}
                         >
@@ -167,10 +167,7 @@ const RequestTable = ({ Requests, reload, setFilter }) => {
                         </button>
                         <button
                           onClick={() => DeleteRequest(request._id)}
-                          className={`btn btn-outline rounded-xl text-rose-400 hover:text-rose-700 hover:bg-rose-50 font-semibold ${
-                            request.Status === "Confirmed" || "hidden "
-                          }`}
-                        >
+                          className={`btn btn-ghost rounded-xl text-rose-400 hover:text-rose-700 hover:bg-rose-50 font-semibold`}>
                           Delete
                         </button>
                       </td>

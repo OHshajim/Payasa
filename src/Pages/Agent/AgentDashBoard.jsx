@@ -1,19 +1,36 @@
-import AgentService from "../../Components/AgentHome/AgentService";
 import Balance from "../../Components/Home/Balance";
 import Footer from "../../Components/Home/Footer";
 import Nav from "../../Components/Home/Nav";
+import Service from "../../Components/Home/Service";
+import Banner from "../../Shared/Banner";
+import SecurityTrustSection from "../../Shared/SecurityTrustSection";
+import Testimonial from "../../Shared/Testimonial";
 const AgentDashBoard = () => {
+  const services = [
+    {
+      service: "Cash Out Report",
+      icon: "/cashout.png",
+      route: "CashOutReport",
+    },
+    {
+      service: "Cash In Request",
+      icon: "/addmoney.png",
+      route: "AddMoneyRequest",
+    },
+  ];
   return (
-    <div className="relative select-none">
+    <div className="relative ">
       <div className="z-50">
-        <div className="mx-14">
+        <div className="bg-green-900 pb-10 md:px-10 px-5 ">
           <Nav />
           <Balance />
         </div>
-        <AgentService />
+        <Service services={services} />
+        <Banner />
+        <SecurityTrustSection />
+        <Testimonial />
         <Footer />
       </div>
-      <div className="absolute bg-green-900 w-screen h-[35vh] top-0 -z-50 banner"></div>
     </div>
   );
 };

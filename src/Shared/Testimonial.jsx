@@ -8,41 +8,6 @@ import "@smastrom/react-rating/style.css";
 import axios from "axios";
 import SectionTitle from "./SectionTitle";
 
-const feed = [
-  {
-    number: "+1-202-555-0143",
-    email: "john.doe@example.com",
-    rating: 5,
-    comment:
-      "Payasa offers a seamless experience! Quick transactions and user-friendly interface.",
-    date: "2024-09-21",
-  },
-  {
-    number: "+44-7700-900567",
-    email: "sarah.jones@example.co.uk",
-    rating: 4.5,
-    comment:
-      "Very reliable service, but the app could load a bit faster during peak hours.",
-    date: "2024-09-20",
-  },
-  {
-    number: "+91-98765-43210",
-    email: "raj.patel@example.in",
-    rating: 4,
-    comment:
-      "Convenient for international transfers, though I’d like to see more features in future updates.",
-    date: "2024-09-19",
-  },
-  {
-    number: "+61-450-555-345",
-    email: "emma.taylor@example.au",
-    rating: 5,
-    comment:
-      "Excellent customer service and fast processing! Highly recommend Payasa for everyday use.",
-    date: "2024-09-18",
-  },
-];
-
 const Testimonial = () => {
   const { data: feedbacks = [], isPending: loading } = useQuery({
     queryKey: ["feedbacks"],
@@ -51,7 +16,6 @@ const Testimonial = () => {
       return res.data;
     },
   });
-  console.log(feedbacks);
 
   return (
     <div className="lg:my-40 my-20">
@@ -79,7 +43,7 @@ const Testimonial = () => {
         modules={[Autoplay, Pagination]}
         className="mySwiper"
       >
-        {feed.map((feedback) => (
+        {feedbacks.map((feedback) => (
           <SwiperSlide key={feedback._id}>
             <div className="flex flex-col items-center pb-10 bg-green-50 rounded-xl ">
               <div className="w-full  px-3 sm:px-10">

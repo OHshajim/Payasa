@@ -10,10 +10,5 @@ const PrivetRoute = ({children}) => {
   }
 };
 
-import PropTypes from 'prop-types';
-PrivetRoute.propTypes = {
-    children: PropTypes.element.isRequired,
-};
-
 export default PrivetRoute;
 

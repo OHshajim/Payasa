@@ -24,7 +24,7 @@ const AgentAddMoney = () => {
 
   return (
     <div className="">
-      <ServiceNav service={"Add money Request"} />
+      <ServiceNav service={"Add money Request"} path={"/Agent"}/>
       <RequestTable Requests={Requests} setFilter={setFilter} reload={reload} />
     </div>
   );

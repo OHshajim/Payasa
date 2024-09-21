@@ -35,8 +35,8 @@ const MoneyTransferForm = ({ number }) => {
     } else if (pathname === "/addMoney") {
       await axiosSecure.post(`/addMoney/${user.number}`, data)
         .then((data) => {
-          if (data?.success) {
-            alert(data.message);
+          if (data?.data.success) {
+            alert(data?.data.message);
             navigate("/")
           } else {
             alert(data.message);
@@ -48,17 +48,21 @@ const MoneyTransferForm = ({ number }) => {
       return alert("Service is not available !!!");
     }
 
-    if (user.balance < data.amount + data.charge) {
+    if (user.balance < amount + data.charge) {
+      console.log(user.balance, amount , data.charge);
+      
       return alert("insufficient balance");
     }
 
-    await axiosSecure(`/moneyTransfer/${user.number}`, data)
+    await axiosSecure.post(`/moneyTransfer/${user.number}`, data)
       .then((data) => {
-        if (data?.success) {
-          alert(data.message);
+        console.log(data);
+        
+        if (data?.data?.success) {
+          alert(data?.data?.message);
           navigate("/")
         } else {
-          alert(data.message);
+          alert(data?.data?.message);
         }
       });
   };

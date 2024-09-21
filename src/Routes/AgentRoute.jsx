@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-import PropTypes from "prop-types";
 
 const AgentRoute = ({ children }) => {
   const AccessKey = localStorage.getItem("access_key");
@@ -15,7 +14,5 @@ const AgentRoute = ({ children }) => {
   return <Navigate to={"/login"} />;
 };
 
-AgentRoute.propTypes = {
-  children: PropTypes.element.isRequired,
-};
+
 export default AgentRoute;

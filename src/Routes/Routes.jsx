@@ -13,6 +13,8 @@ import Transactions from "../Pages/Admin/Transactions";
 import Clients from "../Pages/Admin/Clients";
 import Requests from "../Pages/Admin/Requests";
 import AgentAddMoney from "../Pages/Agent/AgentAddMoney";
+import CashOutReport from "../Pages/Agent/CashOutReport";
+import AllFeedbacks from "../Pages/Admin/AllFeedbacks";
 
 const Routes = createBrowserRouter([
   // Admin
@@ -36,6 +38,10 @@ const Routes = createBrowserRouter([
         path: "Requests",
         element: <Requests />,
       },
+      {
+        path: "Feedbacks",
+        element: <AllFeedbacks />,
+      },
     ],
   },
 
@@ -51,6 +57,10 @@ const Routes = createBrowserRouter([
       {
         path: "AddMoneyRequest",
         element: <AgentAddMoney />,
+      },
+      {
+        path: "CashOutReport",
+        element: <CashOutReport />,
       },
     ],
   },

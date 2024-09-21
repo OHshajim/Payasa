@@ -8,7 +8,6 @@ const MoneyTransfer = () => {
   const [isValid, setValid] = useState(false);
   const [number, setNumber] = useState(null);
   const { pathname } = useLocation();
-  console.log(pathname);
 
   return (
     <div className="select-none">

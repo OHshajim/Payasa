@@ -7,6 +7,23 @@ import SecurityTrustSection from "../Shared/SecurityTrustSection";
 import Testimonial from "../Shared/Testimonial";
 
 const Home = () => {
+  const services = [
+    {
+      service: "Send Money",
+      icon: "/sendmoney.png",
+      route: "/sendMoney",
+    },
+    {
+      service: "Cash Out",
+      icon: "/cashout.png",
+      route: "/cashOut",
+    },
+    {
+      service: "Add Money",
+      icon: "/addmoney.png",
+      route: "/addMoney",
+    },
+  ];
   return (
     <div className="relative ">
       <div className="z-50">
@@ -14,7 +31,7 @@ const Home = () => {
           <Nav />
           <Balance />
         </div>
-        <Service />
+        <Service services={services}/>
         <Banner />
         <SecurityTrustSection/>
         <Testimonial />

@@ -9,9 +9,9 @@ import { NavLink } from "react-router-dom";
 const AdminNav = () => {
 
   return (
-    <div className="min-h-screen h-full">
-      <div className="lg:flex hidden  h-full">
-        <div className="bg-[#046A32] text-[#ffffff]  px-10 xl:px-20 pt-10 flex-col flex h-full ">
+    <div className="max-h-screen h-full fixed max-w-xs w-full">
+      <div className="lg:flex hidden  h-full w-full">
+        <div className="bg-[#046A32] text-[#ffffff]  px-10 xl:px-20 pt-10 flex-col flex h-full  w-full">
           <div className="flex flex-col justify-center items-center">
             <img
               src={"/Logo.png"}

@@ -9,8 +9,10 @@ const AdminLayout = () => {
 
   return (
     <div className="flex">
-      <div>
-        <AdminNav />
+      <div  className="max-w-xs w-full">
+        <div className="w-full">
+          <AdminNav />
+        </div>
       </div>
       <div className="w-full bg-white">
         <div className="navbar bg-base-300 w-full px-5 pt-4 ">
@@ -22,7 +24,9 @@ const AdminLayout = () => {
             {loading || (
               <div className="font-semibold">
                 <h3 className="text-base">{user.email}</h3>
-                <p className="text-right font-semibold text-sm">{user.number}</p>
+                <p className="text-right font-semibold text-sm">
+                  {user.number}
+                </p>
               </div>
             )}
             <img
