@@ -8,7 +8,7 @@ import { TbCurrencyTaka } from "react-icons/tb";
 import SectionTitle from "./SectionTitle";
 const Banner = () => {
   return (
-    <div className=" my-20">
+    <div className="my-20">
       <SectionTitle heading={"NEVER MISS OUR OFFERS && SERVICES"} subHeading={"Our Services"}/>
       <Swiper
         spaceBetween={30}

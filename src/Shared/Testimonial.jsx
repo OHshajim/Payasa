@@ -54,7 +54,7 @@ const Testimonial = () => {
   console.log(feedbacks);
 
   return (
-    <div className="my-20">
+    <div className="lg:my-40 my-20">
         <SectionTitle heading={"Real feedback from satisfied customers"} subHeading={"What Our Users Say"}/>
       {/* {
                 loading && <div className="flex justify-center my-10">

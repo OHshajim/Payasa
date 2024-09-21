@@ -1,3 +1,7 @@
+import { BiMailSend } from "react-icons/bi";
+import { IoCall } from "react-icons/io5";
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <div>
@@ -8,24 +12,23 @@ const Footer = () => {
           </div>
         </aside>
         <nav className=" mx-auto">
-          <h6 className="text-white footer-title ">Services</h6>
-          <a className="link link-hover text-gray-300">Send Money</a>
-          <a className="link link-hover text-gray-300">Cash Out</a>
-          <a className="link link-hover text-gray-300">Cash In</a>
-          <a className="link link-hover text-gray-300">Banking</a>
+          <h6 className="text-white opacity-100 footer-title ">Services</h6>
+          <Link to={"/sendMoney"} className="link link-hover text-gray-300">Send Money</Link>
+          <Link to={"/cashOut"} className="link link-hover text-gray-300">Cash Out</Link>
+          <Link to={"/addMoney"} className="link link-hover text-gray-300">Add Money</Link>
+          <Link className="link link-hover text-gray-300">Banking</Link>
         </nav>
         <nav className=" mx-auto">
-          <h6 className="text-white footer-title ">Company</h6>
+          <h6 className="text-white opacity-100 footer-title ">Company</h6>
           <a className="link link-hover text-gray-300">About us</a>
           <a className="link link-hover text-gray-300">Contact</a>
           <a className="link link-hover text-gray-300">Statement</a>
           <a className="link link-hover text-gray-300">Loan</a>
         </nav>
         <nav className=" mx-auto">
-          <h6 className="text-white footer-title ">Legal</h6>
-          <a className="link link-hover text-gray-300">Terms of use</a>
-          <a className="link link-hover text-gray-300">Privacy policy</a>
-          <a className="link link-hover text-gray-300">Cookie policy</a>
+          <h6 className="text-white opacity-100 footer-title ">Contact us</h6>
+          <a className="link link-hover text-gray-300 flex items-center gap-2"><IoCall className="text-xl"/> +880 1741942510</a>
+          <a className="link link-hover text-gray-300 flex items-center gap-2"><BiMailSend className="text-2xl"/> ajshajimmax@gmail.com</a>
         </nav>
       </footer>
       <footer className="footer footer-center bg-black py-2 text-gray-300">

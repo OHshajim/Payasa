@@ -3,6 +3,7 @@ import Footer from "../Components/Home/Footer";
 import Nav from "../Components/Home/Nav";
 import Service from "../Components/Home/Service";
 import Banner from "../Shared/Banner";
+import SecurityTrustSection from "../Shared/SecurityTrustSection";
 import Testimonial from "../Shared/Testimonial";
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
         </div>
         <Service />
         <Banner />
+        <SecurityTrustSection/>
         <Testimonial />
         <Footer />
       </div>
