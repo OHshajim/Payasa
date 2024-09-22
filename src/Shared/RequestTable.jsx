@@ -2,9 +2,12 @@ import { SiGooglebigquery } from "react-icons/si";
 import { TbCurrencyTaka } from "react-icons/tb";
 import Swal from "sweetalert2";
 import useAxios from "../CustomHooks/useAxios";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const RequestTable = ({ Requests, reload, setFilter }) => {
   const axiosSecure = useAxios();
+  const { user, loading } = useContext(AuthContext);
   const RequestConfirmation = async (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -121,7 +124,7 @@ const RequestTable = ({ Requests, reload, setFilter }) => {
                     <th className="px-4 py-3.5 text-sm text-zinc-500 text-left">
                       Status
                     </th>
-                    <th className="px-4 py-3.5 text-sm text-zinc-500 text-center">
+                    <th className={`px-4 py-3.5 text-sm text-zinc-500 text-center ${user?.status==="General"&&"hidden"}`}>
                       Action
                     </th>
                   </tr>
@@ -156,7 +159,7 @@ const RequestTable = ({ Requests, reload, setFilter }) => {
                           {request.Status}
                         </div>
                       </td>
-                      <td className="px-4 py-4 text-sm gap-4  flex justify-center">
+                      <td className={`px-4 py-4 text-sm gap-4  flex justify-center ${user?.status==="General"&&"hidden"}`}>
                         <button
                           onClick={() => RequestConfirmation(request._id)}
                           className={`btn btn-ghost rounded-xl text-green-600 hover:text-green-700 hover:bg-green-50 font-semibold ${
@@ -167,7 +170,8 @@ const RequestTable = ({ Requests, reload, setFilter }) => {
                         </button>
                         <button
                           onClick={() => DeleteRequest(request._id)}
-                          className={`btn btn-ghost rounded-xl text-rose-400 hover:text-rose-700 hover:bg-rose-50 font-semibold`}>
+                          className={`btn btn-ghost rounded-xl text-rose-400 hover:text-rose-700 hover:bg-rose-50 font-semibold`}
+                        >
                           Delete
                         </button>
                       </td>

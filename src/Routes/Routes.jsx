@@ -17,6 +17,7 @@ import CashOutReport from "../Pages/Agent/CashOutReport";
 import AllFeedbacks from "../Pages/Admin/AllFeedbacks";
 import DashBoard from "../Layout/DashBoard";
 import PrivetTransactions from "../Pages/Dashboard/PrivetTransactions";
+import PrivetRequest from "../Pages/Dashboard/PrivetRequest";
 
 const Routes = createBrowserRouter([
   // Admin
@@ -126,6 +127,10 @@ const Routes = createBrowserRouter([
       {
         path: "Transactions",
         element: <PrivetTransactions />,
+      },
+      {
+        path: "Requests",
+        element: <PrivetRequest />,
       },
     ],
   },
