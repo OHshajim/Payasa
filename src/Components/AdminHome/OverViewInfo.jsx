@@ -15,12 +15,12 @@ const OverViewInfo = () => {
   return (
     <div className="w-full  flex justify-between px-20 gap-10 my-10">
       {stats.map((stat) => (
-        <div className="stats shadow w-full bg-[#2a2a2a] rounded-xl" key={stat.id}>
+        <div className="stats shadow w-full bg-green-50 rounded-xl" key={stat.id}>
           <div className="stat">
-            <div className="stat-title text-zinc-300 font-medium">{stat.name}</div>
+            <div className="stat-title text-zinc-500 font-medium">{stat.name}</div>
             <div className="stat-value flex items-center">{stat.number} 
               <div><TbCurrencyTaka 
-              className={`text-4xl ${stat.name !=="Total Transactions Amount" ? "hidden":""} `}/></div>
+              className={`text-4xl text-green-500 ${stat.name !=="Total Transactions Amount" ? "hidden":""} `}/></div>
               </div>
           </div>
         </div>

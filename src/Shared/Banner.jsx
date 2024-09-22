@@ -3,13 +3,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from "swiper/modules";
 import { TbCurrencyTaka } from "react-icons/tb";
 import SectionTitle from "./SectionTitle";
 const Banner = () => {
   return (
     <div className="my-20">
-      <SectionTitle heading={"NEVER MISS OUR OFFERS && SERVICES"} subHeading={"Our Services"}/>
+      <SectionTitle
+        heading={"NEVER MISS OUR OFFERS && SERVICES"}
+        subHeading={"Our Services"}
+      />
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -24,6 +27,15 @@ const Banner = () => {
         modules={[Autoplay, Pagination]}
         className="mySwiper"
       >
+        <SwiperSlide>
+          <div>
+            <img
+              src="/banner2.png"
+              alt=""
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        </SwiperSlide>
         <SwiperSlide>
           <div className="relative z-0">
             <img src="/banner1.jpg" alt="" />
@@ -79,23 +91,24 @@ const Banner = () => {
                     <span className="text-green-500 flex items-center">
                       50
                       <TbCurrencyTaka />
-                    </span> Taka for every 1000 <TbCurrencyTaka/> Taka Send Money transactions
+                    </span>{" "}
+                    Taka for every 1000 <TbCurrencyTaka /> Taka Send Money
+                    transactions
                   </h3>
-                  <h3 className="text-4xl text-white font-bold">
-                    &
-                  </h3>
+                  <h3 className="text-4xl text-white font-bold">&</h3>
                   <h3 className="text-4xl text-white font-bold my-5 flex justify-center items-center">
                     <span className="text-green-500 flex items-center">
                       15
                       <TbCurrencyTaka />
-                    </span> Taka for every 1000 <TbCurrencyTaka/>  Taka Cash Out transactions !!!
+                    </span>{" "}
+                    Taka for every 1000 <TbCurrencyTaka /> Taka Cash Out
+                    transactions !!!
                   </h3>
                 </div>
               </div>
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
       </Swiper>
     </div>
   );

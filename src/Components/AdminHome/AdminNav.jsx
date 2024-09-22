@@ -1,4 +1,3 @@
-import { CiLogout } from "react-icons/ci";
 import { FaUsers } from "react-icons/fa";
 import { FcFeedback, FcMoneyTransfer } from "react-icons/fc";
 import { IoGitPullRequestSharp } from "react-icons/io5";
