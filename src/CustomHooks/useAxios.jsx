@@ -28,8 +28,8 @@ const useAxios = () => {
       const status = error.response.status;
       console.log("error in interceptor", status, error);
 
-      if (status === 401 || status === 403) {
-        await window.localStorage.clear();
+      if (status == 401 || status == 403) {
+        window.localStorage.clear();
         Navigate("/login");
       }
       return Promise.reject(error);

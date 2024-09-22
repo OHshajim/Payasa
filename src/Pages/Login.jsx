@@ -5,9 +5,11 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
+import useAxios from "../CustomHooks/useAxios";
 
 const Login = () => {
-  const { setLoad } = useContext(AuthContext);
+  const { setLoad, setUser } = useContext(AuthContext);
+  const axiosSecure = useAxios();
   const navigate = useNavigate();
   const {
     register,
@@ -17,16 +19,24 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     const User = data;
-    await axios.post("http://localhost:5000/authentication/login", User)
-    .then((data) => {
-      const { success, access_token, userID } = data.data;
-      if (access_token && success) {
-        localStorage.setItem("access_key", access_token);
-        localStorage.setItem("userID", userID);
-        setLoad(false);
-        navigate("/");
-      }
-    });
+    await axios
+      .post("http://localhost:5000/authentication/login", User)
+      .then(async (data) => {
+        const { success, access_token, userID } = data.data;
+        if (access_token && success) {
+          localStorage.setItem("access_key", access_token);
+          localStorage.setItem("userID", userID);
+          await axiosSecure.get(`/userDetails/${userID}`).then((data) => {
+            setUser(data?.data);
+            setLoad(false);
+            data.data.status === "Admin"
+              ? navigate("/Admin/Overview")
+              : data.data.status === "Agent"
+              ? navigate("/Agent")
+              : navigate("/");
+          });
+        }
+      });
   };
 
   return (

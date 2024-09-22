@@ -13,7 +13,7 @@ const OverViewInfo = () => {
   });
 
   return (
-    <div className="w-full  flex justify-between px-20 gap-10 my-10">
+    <div className="w-full  flex justify-between flex-col lg:flex-row lg:px-20 gap-10 my-10">
       {stats.map((stat) => (
         <div className="stats shadow w-full bg-green-50 rounded-xl" key={stat.id}>
           <div className="stat">

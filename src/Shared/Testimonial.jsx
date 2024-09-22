@@ -19,7 +19,10 @@ const Testimonial = () => {
 
   return (
     <div className="lg:my-40 my-20">
-        <SectionTitle heading={"Real feedback from satisfied customers"} subHeading={"What Our Users Say"}/>
+      <SectionTitle
+        heading={"Real feedback from satisfied customers"}
+        subHeading={"What Our Users Say"}
+      />
       {/* {
                 loading && <div className="flex justify-center my-10">
                     {
@@ -30,7 +33,7 @@ const Testimonial = () => {
 
       <Swiper
         slidesPerView={1.3}
-        spaceBetween={40}
+        spaceBetween={20}
         centeredSlides={true}
         autoplay={{
           delay: 3000,
@@ -40,12 +43,24 @@ const Testimonial = () => {
           clickable: true,
         }}
         navigation={true}
+        breakpoints={{
+          // When the screen width is >= 320px
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+
+          1024: {
+            slidesPerView: 1.5,
+            spaceBetween: 40,
+          },
+        }}
         modules={[Autoplay, Pagination]}
         className="mySwiper"
       >
         {feedbacks.map((feedback) => (
           <SwiperSlide key={feedback._id}>
-            <div className="flex flex-col items-center pb-10 bg-green-50 rounded-xl ">
+            <div className="flex flex-col items-center pb-10 bg-green-50 rounded-xl mx-4">
               <div className="w-full  px-3 sm:px-10">
                 <div className="flex md:items-center justify-between  py-8 flex-col md:flex-row">
                   <div className="mx-0 flex items-center gap-4 ">
@@ -69,7 +84,9 @@ const Testimonial = () => {
                         readOnly
                       />
                     </div>
-                    <p className="text-right mt-2 font-semibold text-sm">{feedback.date}</p>
+                    <p className="text-right mt-2 font-semibold text-sm">
+                      {feedback.date}
+                    </p>
                   </div>
                 </div>
                 <hr />

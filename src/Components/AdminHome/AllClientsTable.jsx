@@ -68,7 +68,7 @@ const AllClientsTable = () => {
   };
 
   return (
-    <section className="container mx-auto px-4">
+    <section className=" px-4">
       <div className="dropdown max-w-52 w-full mt-4">
         <div
           tabIndex={0}

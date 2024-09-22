@@ -5,8 +5,6 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const AdminLayout = () => {
   const { user, loading } = useContext(AuthContext);
-  console.log(user, loading);
-
   return (
     <div className="flex">
       <div  className="max-w-xs w-full hidden lg:block">

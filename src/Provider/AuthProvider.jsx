@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
   }, []);
   // console.log(user);
   
-  const info = { user, loading, setLoad };
+  const info = { user, loading, setLoad ,setUser};
 
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
 };

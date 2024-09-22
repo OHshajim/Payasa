@@ -3,10 +3,15 @@ import { IoGitPullRequestSharp } from "react-icons/io5";
 import { MdReport, MdWindow } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import LogOut from "../Shared/Logout";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+import { BiHome } from "react-icons/bi";
+import { FaUsers } from "react-icons/fa";
 
 const DashboardNav = () => {
-    return (
-        <div className="max-h-screen h-full fixed max-w-xs w-full">
+  const { user } = useContext(AuthContext);
+  return (
+    <div className="max-h-screen h-full fixed max-w-xs w-full">
       <div className="lg:flex hidden  h-full w-full">
         <div className="bg-[#046A32] text-[#ffffff]  px-10 xl:px-20 pt-10 flex-col flex h-full  w-full">
           <div className="flex flex-col justify-center items-center">
@@ -16,91 +21,201 @@ const DashboardNav = () => {
               className="rounded-full ring-4 ring-[#0d3d0b] w-20  mb-3"
             />
           </div>
-          <ul className="font-medium pt-8 uppercase space-y-5">
-            <li>
-              <NavLink
-                to="Overview"
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "pending"
-                    : isActive
-                    ? "text-[#3dc029] flex items-center gap-2 scale-110"
-                    : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
-                }
-              >
-                <MdWindow  className="text-2xl" />
-                Overview
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="Transactions"
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "pending"
-                    : isActive
-                   ? "text-[#3dc029] flex items-center gap-2 scale-110"
-                    : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
-                }
-              >
-                <FcMoneyTransfer  className="text-2xl" />
-                Transactions
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="Requests"
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "pending"
-                    : isActive
-                    ? "text-[#3dc029] flex items-center gap-2 scale-110"
-                    : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
-                }
-              >
-                <IoGitPullRequestSharp  className="text-2xl" />
-                Requests
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="Report"
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "pending"
-                    : isActive
-                    ? "text-[#3dc029] flex items-center gap-2 scale-110"
-                    : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
-                }
-              >
-                <MdReport className="text-2xl" />
-                Report
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="Feedback"
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "pending"
-                    : isActive
-                    ? "text-[#3dc029] flex items-center gap-2 scale-110"
-                    : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
-                }
-              >
-                <FcFeedback  className="text-2xl" />
-                Feedback
-              </NavLink>
-            </li>
-
-          </ul>
+          {user.status === "Admin" ? (
+            <ul className="font-medium pt-8 uppercase space-y-5">
+              <li>
+                <NavLink
+                  to="Overview"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-[#3dc029] flex items-center gap-2 scale-110"
+                      : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
+                  }
+                >
+                  <MdWindow className="text-2xl" />
+                  Overview
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="Transactions"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-[#3dc029] flex items-center gap-2 scale-110"
+                      : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
+                  }
+                >
+                  <FcMoneyTransfer className="text-2xl" />
+                  Transactions
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="Clients"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-[#3dc029] flex items-center gap-2 scale-110"
+                      : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
+                  }
+                >
+                  <FaUsers className="text-2xl" />
+                  Clients
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="Requests"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-[#3dc029] flex items-center gap-2 scale-110"
+                      : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
+                  }
+                >
+                  <IoGitPullRequestSharp className="text-2xl" />
+                  Requests
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="Reports"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-[#3dc029] flex items-center gap-2 scale-110"
+                      : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
+                  }
+                >
+                  <MdReport className="text-2xl" />
+                  Reports
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="Feedbacks"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-[#3dc029] flex items-center gap-2 scale-110"
+                      : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
+                  }
+                >
+                  <FcFeedback className="text-2xl" />
+                  Feedbacks
+                </NavLink>
+              </li>
+            </ul>
+          ) : (
+            <ul className="font-medium pt-8 uppercase space-y-5">
+              <li>
+                <NavLink
+                  to="Overview"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-[#3dc029] flex items-center gap-2 scale-110"
+                      : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
+                  }
+                >
+                  <MdWindow className="text-2xl" />
+                  Overview
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="Transactions"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-[#3dc029] flex items-center gap-2 scale-110"
+                      : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
+                  }
+                >
+                  <FcMoneyTransfer className="text-2xl" />
+                  Transactions
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="Requests"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-[#3dc029] flex items-center gap-2 scale-110"
+                      : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
+                  }
+                >
+                  <IoGitPullRequestSharp className="text-2xl" />
+                  Requests
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="Report"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-[#3dc029] flex items-center gap-2 scale-110"
+                      : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
+                  }
+                >
+                  <MdReport className="text-2xl" />
+                  Report
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="Feedback"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-[#3dc029] flex items-center gap-2 scale-110"
+                      : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
+                  }
+                >
+                  <FcFeedback className="text-2xl" />
+                  Feedback
+                </NavLink>
+              </li>
+              <hr />
+              <li>
+                <NavLink
+                  to={user.status === "General" ? "/" : "/Agent"}
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-[#3dc029] flex items-center gap-2 scale-110"
+                      : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
+                  }
+                >
+                  <BiHome className="text-2xl" />
+                  Home
+                </NavLink>
+              </li>
+            </ul>
+          )}
           <div className="flex items-end h-full py-5">
-            <LogOut/>
+            <LogOut />
           </div>
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default DashboardNav;

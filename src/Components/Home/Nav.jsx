@@ -8,7 +8,7 @@ const Nav = () => {
     <div className="navbar  py-4">
       <div className="flex-1 gap-2">
         <div className="w-[50px]">
-          <Link to={`Dashboard/${user?.number}/Overview`}><img
+          <Link to={`/Dashboard/${user?.number}/Overview`}><img
             alt="User"
             src="https://i.ibb.co.com/Mc6FwVb/112186-OOJKAQ-59.jpg"
             className="rounded-full ring-4 ring-green-600"

@@ -30,44 +30,46 @@ const Banner = () => {
         <SwiperSlide>
           <div>
             <img
-              src="/banner2.png"
-              alt=""
+              src="https://i.ibb.co.com/tJRxdmW/banner2.png"
+              alt="banner"
               className="w-full h-auto object-cover"
             />
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="relative z-0">
-            <img src="/banner1.jpg" alt="" />
-            <div className="absolute z-10 top-0 w-full h-full ">
-              <div className="flex justify-between items-center w-full h-full">
+            <img
+              src="https://i.ibb.co.com/TkfLWJn/banner1.jpg"
+              alt=""
+              className="w-full h-auto object-cover"
+            />
+            <div className="absolute z-10 top-0 w-full h-full bg-black/50">
+              <div className="flex flex-row justify-between items-center w-full h-full">
                 <div></div>
-                <div className="px-20 max-w-5xl ">
-                  <h4 className="text-xl text-green-400 font-semibold ">
-                    <span>Bonus Offer for New Accounts </span>
+                <div className="px-5 lg:px-20 max-w-xl lg:max-w-5xl text-center lg:text-left">
+                  <h4 className="lg:text-xl md:text-base text-[5px] text-green-400 font-semibold">
+                    Bonus Offer for New Accounts
                   </h4>
-                  <div className="text-5xl text-white font-bold leading-[100px] my-5">
-                    <h3 className="  flex">
+                  <div className="text-sm md:text-xl lg:text-3xl xl:text-5xl text-white font-bold leading-tight xl:leading-[100px] lg:my-5">
+                    <h3 className="flex justify-center lg:justify-start">
                       <span className="text-green-500 flex items-center">
                         50
                         <TbCurrencyTaka />
                       </span>{" "}
                       Taka for General Accounts
                     </h3>
-                    <h3 className="text-center">&</h3>
-                    <h3 className=" flex">
+                    <h3 className="text-center lg:my-3">&</h3>
+                    <h3 className="flex justify-center lg:justify-start">
                       <span className="text-green-500 flex items-center">
                         20000 <TbCurrencyTaka />
                       </span>{" "}
                       Taka for new Agents !!!
                     </h3>
                   </div>
-                  <p className="text-zinc-300">
-                    This bonus only for new accounts and also its only for one
-                    time bonus - powered by{" "}
-                    <span className="text-green-500 font-semibold ">
-                      PAYASA
-                    </span>
+                  <p className="text-zinc-300 lg:text-sm md:text-xs text-[5px]">
+                    This bonus is only for new accounts and is a one-time bonus
+                    - powered by{" "}
+                    <span className="text-green-500 font-semibold">PAYASA</span>
                   </p>
                 </div>
               </div>
@@ -77,32 +79,32 @@ const Banner = () => {
         <SwiperSlide>
           <div className="relative z-0">
             <img
-              src="/banner1.jpg"
+              src="https://i.ibb.co/TkfLWJn/banner1.jpg"
               alt=""
               className="w-full h-auto object-cover"
             />
-            <div className="absolute z-10 inset-0 bg-green-600 bg-opacity-50 flex items-center">
-              <div className="w-full px-4 sm:px-8 md:px-16 lg:px-32">
-                <div className="border p-6 sm:p-10 bg-opacity-70 bg-black rounded-md text-center ">
-                  <h4 className="text-xl text-green-400 font-semibold ">
-                    Money transfer Offers
+            <div className="absolute z-10 inset-0 bg-green-600 bg-opacity-30 flex items-center">
+              <div className="w-full  sm:px-8 md:px-16 lg:px-32">
+                <div className="border p-4 sm:p-8 md:p-10 bg-opacity-80 bg-black rounded-md text-center">
+                  <h4 className="text-xs sm:text-sm md:text-base lg:text-xl text-green-400 font-semibold">
+                    Money Transfer Offers
                   </h4>
-                  <h3 className="text-4xl text-white font-bold my-5 flex justify-center items-center">
+                  <h3 className="text-xs md:text-xl lg:text-2xl xl:text-5xl text-white font-bold md:my-5 flex justify-center items-center">
                     <span className="text-green-500 flex items-center">
                       50
                       <TbCurrencyTaka />
                     </span>{" "}
                     Taka for every 1000 <TbCurrencyTaka /> Taka Send Money
-                    transactions
                   </h3>
-                  <h3 className="text-4xl text-white font-bold">&</h3>
-                  <h3 className="text-4xl text-white font-bold my-5 flex justify-center items-center">
+                  <h3 className="text-xs md:text-xl lg:text-2xl xl:text-5xl text-white font-bold">
+                    &
+                  </h3>
+                  <h3 className="text-xs md:text-xl lg:text-2xl xl:text-5xl text-white font-bold md:my-5 flex justify-center items-center">
                     <span className="text-green-500 flex items-center">
                       15
                       <TbCurrencyTaka />
                     </span>{" "}
-                    Taka for every 1000 <TbCurrencyTaka /> Taka Cash Out
-                    transactions !!!
+                    Taka for every 1000 <TbCurrencyTaka /> Taka Cash Out !!!
                   </h3>
                 </div>
               </div>

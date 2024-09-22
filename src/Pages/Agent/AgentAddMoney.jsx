@@ -9,22 +9,22 @@ const AgentAddMoney = () => {
   const [filter, setFilter] = useState("All");
   const axiosSecure = useAxios();
   const { user, loading: authLoading } = useContext(AuthContext);
-  
-  const { 
-    data: Requests = [], 
-    refetch: reload, 
-  } = useQuery({
+
+  const { data: Requests = [], refetch: reload } = useQuery({
     queryKey: ["Requests", filter],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/AgentRequests/${user.number}?filter=${filter}`);
+      const res = await axiosSecure.get(
+        `/AgentRequests/${user.number}?filter=${filter}`
+      );
       return res.data;
     },
-    enabled: !authLoading && !!user, 
+    enabled: !authLoading && !!user,
   });
+  console.log(Requests,user);
 
   return (
     <div className="">
-      <ServiceNav service={"Add money Request"} path={"/Agent"}/>
+      <ServiceNav service={"Add money Request"} path={"/Agent"} />
       <RequestTable Requests={Requests} setFilter={setFilter} reload={reload} />
     </div>
   );

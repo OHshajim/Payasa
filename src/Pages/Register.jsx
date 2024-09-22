@@ -5,10 +5,12 @@ import { MdOutlineMail } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
+import useAxios from "../CustomHooks/useAxios";
 
 const Register = () => {
   const navigate = useNavigate();
-  const { setLoad } = useContext(AuthContext);
+  const axiosSecure = useAxios();
+  const { setLoad ,setUser} = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -19,14 +21,21 @@ const Register = () => {
     const NewUser = data;
 
     await axios
-      .post('http://localhost:5000/authentication/register', NewUser)
-      .then((data) => {
+      .post("http://localhost:5000/authentication/register", NewUser)
+      .then(async(data) => {
         const { success, access_token, userID } = data.data;
         if (access_token && success) {
           localStorage.setItem("access_key", access_token);
           localStorage.setItem("userID", userID);
-          setLoad(false);
-          navigate("/");
+          await axiosSecure.get(`/userDetails/${userID}`).then((data) => {
+            setUser(data?.data);
+            setLoad(false);
+            data.data.status === "Admin"
+              ? navigate("/Admin/Overview")
+              : data.data.status === "Agent"
+              ? navigate("/Agent")
+              : navigate("/");
+          });
         }
       });
   };
@@ -162,10 +171,7 @@ export const AuthenticateBtn = (text) => {
   return (
     <div className="mt-8 md:flex md:items-center w-full">
       <button
-        className="w-full px-6 py-3 text-sm font-medium  text-white rounded-lg
-      bg-gradient-to-t from-[#428527] via-[#65b325] to-[#AFE84F]
-      hover:bg-gradient-to-t hover:from-[#224514]  hover:via-[#397a04] hover:to-[#6a961c]
-      "
+        className="w-full px-6 py-3 text-sm font-medium  text-white rounded-lg bg-green-600 hover:bg-green-700"
       >
         {text}
       </button>

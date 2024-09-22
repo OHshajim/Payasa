@@ -21,12 +21,18 @@ import PrivetRequest from "../Pages/Dashboard/PrivetRequest";
 import FeedbackForm from "../Pages/Dashboard/Feedback";
 import Report from "../Pages/Dashboard/Report";
 import Reports from "../Pages/Admin/Reports";
+import AgentRoute from "./AgentRoute";
+import AdminRoute from "./AdminRoute";
 
 const Routes = createBrowserRouter([
   // Admin
   {
     path: "Admin",
-    element: <AdminLayout />,
+    element: (
+      <AdminRoute>
+        <AdminLayout />
+      </AdminRoute>
+    ),
     children: [
       {
         path: "OverView",
@@ -58,7 +64,11 @@ const Routes = createBrowserRouter([
   // Agent
   {
     path: "Agent",
-    element: <AgentLayout />,
+    element: (
+      <AgentRoute>
+        <AgentLayout />
+      </AgentRoute>
+    ),
     children: [
       {
         path: "",
@@ -125,7 +135,11 @@ const Routes = createBrowserRouter([
   // Dashboard
   {
     path: "Dashboard/:number",
-    element: <DashBoard />,
+    element: (
+      <PrivetRoute>
+        <DashBoard />
+      </PrivetRoute>
+    ),
     children: [
       {
         path: "Overview",
