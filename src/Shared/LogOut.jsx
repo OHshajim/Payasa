@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const LogOut = () => {
   const navigate = useNavigate();
-  const logout = () => {
+   const logout = () => {
     window.localStorage.clear();
     navigate("/login");
   };

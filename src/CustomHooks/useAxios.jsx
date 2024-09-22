@@ -1,10 +1,14 @@
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
 const secureAxios = axios.create({ baseURL: "http://localhost:5000/" });
 
 const useAxios = () => {
-  // const navigate = useNavigate();
+  const Navigate = ({ path }) => {
+    const nav = useNavigate();
+    nav(path)
+  };
+
   secureAxios.interceptors.request.use(
     function (config) {
       const token = localStorage.getItem("access_key");
@@ -16,16 +20,17 @@ const useAxios = () => {
     }
   );
 
-  axios.interceptors.response.use(
+  secureAxios.interceptors.response.use(
     function (response) {
       return response;
     },
     async (error) => {
       const status = error.response.status;
-      console.log("error in interceptor", status);
+      console.log("error in interceptor", status, error);
+
       if (status === 401 || status === 403) {
-        // await Logout();
-        // navigate("/login");
+        await window.localStorage.clear();
+        Navigate("/login");
       }
       return Promise.reject(error);
     }

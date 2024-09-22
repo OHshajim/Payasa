@@ -11,24 +11,18 @@ const AuthProvider = ({ children }) => {
     if (id) {
       axiosSecure.get(`/userDetails/${id}`)
         .then((data) => {
-          setUser(data.data);
+          setUser(data?.data);
           setLoad(false);
         });
     }
   };
 
-  const LogOut = () => {
-    window.localStorage.removeItem("access_key");
-    window.localStorage.removeItem("userID");
-    setLoad(false);
-  };
-
   useEffect(() => {
     userDetails();
-  }, [loading]);
-  console.log(user);
+  }, []);
+  // console.log(user);
   
-  const info = { user, loading, setLoad, LogOut };
+  const info = { user, loading, setLoad };
 
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
 };

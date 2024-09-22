@@ -9,7 +9,7 @@ import axios from "axios";
 import SectionTitle from "./SectionTitle";
 
 const Testimonial = () => {
-  const { data: feedbacks = [], isPending: loading } = useQuery({
+  const { data: feedbacks = [] } = useQuery({
     queryKey: ["feedbacks"],
     queryFn: async () => {
       const res = await axios.get("http://localhost:5000/feedbacks");
