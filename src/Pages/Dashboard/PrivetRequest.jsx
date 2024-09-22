@@ -14,7 +14,6 @@ const PrivetRequest = () => {
       const res = await axiosSecure.get(
         `/PrivetRequest/${user.number}?filter=${filter}`
       );
-      console.log(res);
       return res.data;
     },
     enabled: !loading,

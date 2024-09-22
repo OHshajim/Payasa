@@ -14,7 +14,6 @@ const PrivetTransactions = () => {
       const res = await axiosSecure.get(
         `/PrivetTransactions/${user?.number}?service=${service}`
       );
-      console.log(res);
       return res.data;
     },
     enabled: !loading,

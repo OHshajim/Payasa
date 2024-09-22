@@ -5,9 +5,9 @@ import { IoGitPullRequestSharp } from "react-icons/io5";
 import { MdReport, MdWindow } from "react-icons/md";
 
 import { NavLink } from "react-router-dom";
+import LogOut from "../../Shared/Logout";
 
 const AdminNav = () => {
-
   return (
     <div className="max-h-screen h-full fixed max-w-xs w-full">
       <div className="lg:flex hidden  h-full w-full">
@@ -31,7 +31,7 @@ const AdminNav = () => {
                     : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
                 }
               >
-                <MdWindow  className="text-2xl" />
+                <MdWindow className="text-2xl" />
                 Overview
               </NavLink>
             </li>
@@ -42,11 +42,11 @@ const AdminNav = () => {
                   isPending
                     ? "pending"
                     : isActive
-                   ? "text-[#3dc029] flex items-center gap-2 scale-110"
+                    ? "text-[#3dc029] flex items-center gap-2 scale-110"
                     : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
                 }
               >
-                <FcMoneyTransfer  className="text-2xl" />
+                <FcMoneyTransfer className="text-2xl" />
                 Transactions
               </NavLink>
             </li>
@@ -61,7 +61,7 @@ const AdminNav = () => {
                     : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
                 }
               >
-                <FaUsers  className="text-2xl" />
+                <FaUsers className="text-2xl" />
                 Clients
               </NavLink>
             </li>
@@ -76,7 +76,7 @@ const AdminNav = () => {
                     : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
                 }
               >
-                <IoGitPullRequestSharp  className="text-2xl" />
+                <IoGitPullRequestSharp className="text-2xl" />
                 Requests
               </NavLink>
             </li>
@@ -106,14 +106,13 @@ const AdminNav = () => {
                     : "flex items-center gap-2 hover:scale-110 transform transition duration-300 ease-in-out"
                 }
               >
-                <FcFeedback  className="text-2xl" />
+                <FcFeedback className="text-2xl" />
                 Feedbacks
               </NavLink>
             </li>
-
           </ul>
           <div className="flex items-end h-full py-5">
-            <button className="flex items-center btn btn-ghost text-rose-400 text-lg font-bold rounded-xl hover:bg-green-950"> <CiLogout className="text-2xl"/>LogOut</button>
+            <LogOut />
           </div>
         </div>
       </div>

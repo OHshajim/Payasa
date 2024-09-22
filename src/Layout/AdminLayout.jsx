@@ -9,7 +9,7 @@ const AdminLayout = () => {
 
   return (
     <div className="flex">
-      <div  className="max-w-xs w-full">
+      <div  className="max-w-xs w-full hidden lg:block">
         <div className="w-full">
           <AdminNav />
         </div>

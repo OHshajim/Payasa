@@ -19,6 +19,8 @@ import DashBoard from "../Layout/DashBoard";
 import PrivetTransactions from "../Pages/Dashboard/PrivetTransactions";
 import PrivetRequest from "../Pages/Dashboard/PrivetRequest";
 import FeedbackForm from "../Pages/Dashboard/Feedback";
+import Report from "../Pages/Dashboard/Report";
+import Reports from "../Pages/Admin/Reports";
 
 const Routes = createBrowserRouter([
   // Admin
@@ -41,6 +43,10 @@ const Routes = createBrowserRouter([
       {
         path: "Requests",
         element: <Requests />,
+      },
+      {
+        path: "Reports",
+        element: <Reports />,
       },
       {
         path: "Feedbacks",
@@ -132,6 +138,10 @@ const Routes = createBrowserRouter([
       {
         path: "Requests",
         element: <PrivetRequest />,
+      },
+      {
+        path: "Report",
+        element: <Report />,
       },
       {
         path: "Feedback",
