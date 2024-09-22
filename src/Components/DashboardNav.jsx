@@ -64,7 +64,7 @@ const DashboardNav = () => {
             </li>
             <li>
               <NavLink
-                to="Reports"
+                to="Report"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"
@@ -74,12 +74,12 @@ const DashboardNav = () => {
                 }
               >
                 <MdReport className="text-2xl" />
-                Reports
+                Report
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="Feedbacks"
+                to="Feedback"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"
@@ -89,7 +89,7 @@ const DashboardNav = () => {
                 }
               >
                 <FcFeedback  className="text-2xl" />
-                Feedbacks
+                Feedback
               </NavLink>
             </li>
 

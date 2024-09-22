@@ -7,7 +7,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const RequestTable = ({ Requests, reload, setFilter }) => {
   const axiosSecure = useAxios();
-  const { user, loading } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const RequestConfirmation = async (id) => {
     Swal.fire({
       title: "Are you sure?",
