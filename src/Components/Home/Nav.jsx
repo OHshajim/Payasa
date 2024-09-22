@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const { user } = useContext(AuthContext);
@@ -7,11 +8,11 @@ const Nav = () => {
     <div className="navbar  py-4">
       <div className="flex-1 gap-2">
         <div className="w-[50px]">
-          <img
+          <Link to={`Dashboard/${user?.number}/Overview`}><img
             alt="User"
             src="https://i.ibb.co.com/Mc6FwVb/112186-OOJKAQ-59.jpg"
             className="rounded-full ring-4 ring-green-600"
-          />
+          /></Link>
         </div>
         <div className="flex flex-col mx-2  items-start ">
           <h4 className="font-semibold text-base text-zinc-300">{user?.email}</h4>

@@ -15,6 +15,8 @@ import Requests from "../Pages/Admin/Requests";
 import AgentAddMoney from "../Pages/Agent/AgentAddMoney";
 import CashOutReport from "../Pages/Agent/CashOutReport";
 import AllFeedbacks from "../Pages/Admin/AllFeedbacks";
+import DashBoard from "../Layout/DashBoard";
+import PrivetTransactions from "../Pages/Dashboard/PrivetTransactions";
 
 const Routes = createBrowserRouter([
   // Admin
@@ -109,6 +111,21 @@ const Routes = createBrowserRouter([
       {
         path: "/registration",
         element: <Register />,
+      },
+    ],
+  },
+  // Dashboard
+  {
+    path: "Dashboard/:number",
+    element: <DashBoard />,
+    children: [
+      {
+        path: "Overview",
+        element: <></>,
+      },
+      {
+        path: "Transactions",
+        element: <PrivetTransactions />,
       },
     ],
   },
