@@ -3,6 +3,7 @@ import useAxios from "../../CustomHooks/useAxios";
 import TransectionTable from "../../Shared/TransectionTable";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import SectionTitle from "../../Shared/SectionTitle";
 
 const PrivetTransactions = () => {
   const axiosSecure = useAxios();
@@ -20,7 +21,8 @@ const PrivetTransactions = () => {
   });
   
   return (
-    <div>
+    <div className="lg:p-10 p-5">
+      <SectionTitle heading={"Your Transaction histories"} subHeading={"Transactions"} />
       <TransectionTable transactions={transactions} setService={setService} />
     </div>
   );

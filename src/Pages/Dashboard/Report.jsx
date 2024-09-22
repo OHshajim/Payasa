@@ -31,9 +31,9 @@ const Report = () => {
   };
 
   return (
-    <div className="p-10">
+    <div className="sm:p-10 p-5">
       <SectionTitle
-        heading={"Report an Issue"}
+        heading={"Report and Issue"}
         subHeading={"Report"}
       />
       {loading || (
@@ -41,9 +41,9 @@ const Report = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="p-6 bg-gray-50 shadow-xl rounded-xl"
         >
-          <div className="flex gap-5">
+          <div className="flex gap-5  lg:flex-row flex-col">
             {/* Number Input */}
-            <div className="mb-4 w-1/2">
+            <div className="mb-4 lg:w-1/2">
               <label className="block text-sm font-bold mb-2">Number</label>
               <input
                 value={`0${user.number}`}
@@ -54,7 +54,7 @@ const Report = () => {
             </div>
 
             {/* Email Input */}
-            <div className="mb-4 w-1/2">
+            <div className="mb-4 lg:w-1/2">
               <label className="block text-sm font-bold mb-2">Email</label>
               <input
                 value={user.email}

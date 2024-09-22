@@ -1,11 +1,13 @@
-import AllClientsTable from '../../Components/AdminHome/AllClientsTable';
+import AllClientsTable from "../../Components/AdminHome/AllClientsTable";
+import SectionTitle from "../../Shared/SectionTitle";
 
 const Clients = () => {
-    return (
-        <div>
-          <AllClientsTable/>  
-        </div>
-    );
+  return (
+    <div>
+      <SectionTitle heading={"Clients Details and Updates"} subHeading={"All Clients"} />
+      <AllClientsTable />
+    </div>
+  );
 };
 
 export default Clients;

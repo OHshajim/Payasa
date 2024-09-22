@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import RequestTable from "../../Shared/RequestTable";
 import useAxios from "../../CustomHooks/useAxios";
+import SectionTitle from "../../Shared/SectionTitle";
 
 const Requests = () => {
   const axiosSecure = useAxios();
@@ -15,7 +16,10 @@ const Requests = () => {
     },
   });
   return (
-    <RequestTable Requests={Requests} reload={reload} setFilter={setFilter} />
+    <div className=" lg:p-10 p-5">
+      <SectionTitle heading={"All Clients Cash In Requests"} subHeading={"Requests"} />
+      <RequestTable Requests={Requests} reload={reload} setFilter={setFilter} />
+    </div>
   );
 };
 

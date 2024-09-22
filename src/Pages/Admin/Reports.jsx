@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../CustomHooks/useAxios";
+import SectionTitle from "../../Shared/SectionTitle";
 
 const Reports = () => {
   const axiosSecure = useAxios();
@@ -13,8 +14,12 @@ const Reports = () => {
   console.log(reports);
 
   return (
-    <div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10 p-10">
+    <div className="lg:p-10 p-5">
+        <SectionTitle
+        heading={"Reports and Issues"}
+        subHeading={"Report"}
+      />
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
         {reports.map((report) => (
           <div
                 key={report._id}

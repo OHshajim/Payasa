@@ -3,6 +3,7 @@ import useAxios from "../../CustomHooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import RequestTable from "../../Shared/RequestTable";
 import { AuthContext } from "../../Provider/AuthProvider";
+import SectionTitle from "../../Shared/SectionTitle";
 
 const PrivetRequest = () => {
   const axiosSecure = useAxios();
@@ -19,7 +20,10 @@ const PrivetRequest = () => {
     enabled: !loading,
   });
   return (
-    <RequestTable Requests={Requests} reload={reload} setFilter={setFilter} />
+    <div className="lg:p-10 p-5">
+      <SectionTitle heading={"Your Cash In Requests"} subHeading={"Requests"} />
+      <RequestTable Requests={Requests} reload={reload} setFilter={setFilter} />
+    </div>
   );
 };
 
